@@ -35,6 +35,7 @@ class Plugin {
 		( new Roles() )->register();
 		( new Activity_Log() )->register();
 		( new Cron() )->register();
+		( new Image_Optimizer() )->register();
 
 		$this->assets->register();
 

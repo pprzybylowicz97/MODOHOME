@@ -186,8 +186,6 @@ class Settings_Page {
 					$this->checkbox_row( $name, 'worker_autopublish', __( 'Publikacja produktów pracowników', 'modohome-katalog-produktow' ), __( 'Publikuj od razu, bez zatwierdzania', 'modohome-katalog-produktow' ), (bool) $s['worker_autopublish'] );
 					$this->checkbox_row( $name, 'workers_can_create_terms', __( 'Kategorie przez pracowników', 'modohome-katalog-produktow' ), __( 'Pozwól pracownikom tworzyć kategorie', 'modohome-katalog-produktow' ), (bool) $s['workers_can_create_terms'] );
 
-					$this->number_row( $name, 'max_upload_size', __( 'Maksymalny rozmiar zdjęcia (MB)', 'modohome-katalog-produktow' ), (int) $s['max_upload_size'], 1, 64 );
-					$this->number_row( $name, 'max_image_dimension', __( 'Maksymalny wymiar obrazu (px)', 'modohome-katalog-produktow' ), (int) $s['max_image_dimension'], 400, 5000 );
 					$this->number_row( $name, 'auto_hide_days', __( 'Automatyczne ukrycie po (dni, 0 = wyłączone)', 'modohome-katalog-produktow' ), (int) $s['auto_hide_days'], 0, 3650 );
 
 					$this->text_row( $name, 'currency', __( 'Waluta', 'modohome-katalog-produktow' ), (string) $s['currency'] );
@@ -202,6 +200,49 @@ class Settings_Page {
 						(string) $s['currency_position']
 					);
 					?>
+				</table>
+
+				<h2 class="title"><?php esc_html_e( 'Optymalizacja zdjęć', 'modohome-katalog-produktow' ); ?></h2>
+				<p class="description">
+					<?php esc_html_e( 'Zdjęcie jest skalowane i konwertowane zanim WordPress zapisze je na dysku, więc na serwerze nie zostaje wielki oryginał z telefonu.', 'modohome-katalog-produktow' ); ?>
+					<?php if ( ! \MODOhome\Catalog\Image_Optimizer::is_supported() ) : ?>
+						<strong><?php esc_html_e( 'Uwaga: ten serwer nie obsługuje zapisu WebP — zdjęcia będą tylko skalowane.', 'modohome-katalog-produktow' ); ?></strong>
+					<?php endif; ?>
+				</p>
+				<table class="form-table" role="presentation">
+					<?php
+					$this->number_row( $name, 'max_upload_size', __( 'Maksymalny rozmiar przesyłanego pliku (MB)', 'modohome-katalog-produktow' ), (int) $s['max_upload_size'], 1, 64 );
+					$this->number_row( $name, 'max_image_dimension', __( 'Maksymalny wymiar obrazu (px)', 'modohome-katalog-produktow' ), (int) $s['max_image_dimension'], 400, 5000 );
+
+					$this->checkbox_row(
+						$name,
+						'webp_convert',
+						__( 'Konwersja do WebP', 'modohome-katalog-produktow' ),
+						__( 'Zapisuj przesyłane zdjęcia jako WebP (zwykle 25–35% mniejsze od JPG)', 'modohome-katalog-produktow' ),
+						(bool) $s['webp_convert']
+					);
+
+					$this->number_row( $name, 'webp_quality', __( 'Jakość WebP (40–100)', 'modohome-katalog-produktow' ), (int) $s['webp_quality'], 40, 100 );
+
+					$this->checkbox_row(
+						$name,
+						'webp_convert_all',
+						__( 'Optymalizuj całą stronę', 'modohome-katalog-produktow' ),
+						__( 'Stosuj skalowanie i konwersję także do zdjęć przesyłanych poza katalogiem (wpisy, strony, biblioteka mediów)', 'modohome-katalog-produktow' ),
+						(bool) $s['webp_convert_all']
+					);
+					?>
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Obsługa WebP na serwerze', 'modohome-katalog-produktow' ); ?></th>
+						<td>
+							<?php if ( \MODOhome\Catalog\Image_Optimizer::is_supported() ) : ?>
+								<span class="modohome-admin-status modohome-admin-status--available"><?php esc_html_e( 'Dostępna', 'modohome-katalog-produktow' ); ?></span>
+							<?php else : ?>
+								<span class="modohome-admin-status modohome-admin-status--sold"><?php esc_html_e( 'Niedostępna', 'modohome-katalog-produktow' ); ?></span>
+								<p class="description"><?php esc_html_e( 'Poproś hosting o włączenie GD z obsługą WebP lub rozszerzenia Imagick.', 'modohome-katalog-produktow' ); ?></p>
+							<?php endif; ?>
+						</td>
+					</tr>
 				</table>
 
 				<h2 class="title"><?php esc_html_e( 'Dane i zaawansowane', 'modohome-katalog-produktow' ); ?></h2>

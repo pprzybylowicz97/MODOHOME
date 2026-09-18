@@ -69,6 +69,9 @@ class Settings {
 			'workers_can_create_terms'   => false,
 			'max_upload_size'            => 10,
 			'max_image_dimension'        => 1600,
+			'webp_convert'               => true,
+			'webp_quality'               => 82,
+			'webp_convert_all'           => false,
 			'currency'                   => 'zł',
 			'currency_position'          => 'after',
 			'details_mode'               => 'modal',
@@ -228,6 +231,7 @@ class Settings {
 
 		$out['max_upload_size']     = self::clamp_int( $input['max_upload_size'] ?? 10, 1, 64, 10 );
 		$out['max_image_dimension'] = self::clamp_int( $input['max_image_dimension'] ?? 1600, 400, 5000, 1600 );
+		$out['webp_quality']        = self::clamp_int( $input['webp_quality'] ?? 82, 40, 100, 82 );
 
 		$currency           = sanitize_text_field( (string) ( $input['currency'] ?? '' ) );
 		$out['currency']    = '' !== $currency ? mb_substr( $currency, 0, 8 ) : $defaults['currency'];
@@ -235,7 +239,7 @@ class Settings {
 
 		$out['details_mode']  = self::pick( $input['details_mode'] ?? '', array( 'modal', 'link', 'none' ), $defaults['details_mode'] );
 
-		foreach ( array( 'enable_search', 'enable_filters', 'enable_load_more', 'enable_single_pages', 'show_added_today', 'show_category_counts', 'enable_activity_log', 'delete_data_on_uninstall' ) as $flag ) {
+		foreach ( array( 'enable_search', 'enable_filters', 'enable_load_more', 'enable_single_pages', 'show_added_today', 'show_category_counts', 'enable_activity_log', 'delete_data_on_uninstall', 'webp_convert', 'webp_convert_all' ) as $flag ) {
 			$out[ $flag ] = ! empty( $input[ $flag ] );
 		}
 

@@ -120,9 +120,12 @@ class Image_Handler {
 
 		$threshold_filter = static fn(): int => max( 400, Settings::int( 'max_image_dimension' ) );
 
-		// Duże zdjęcia z telefonu WordPress przeskaluje do ustawionego wymiaru,
-		// zachowując proporcje i korygując orientację na podstawie danych EXIF.
+		// Zdjęcie skalujemy i konwertujemy jeszcze przed zapisem na dysk, więc
+		// WordPress nie odkłada obok niego wielkiego oryginału. Filtr „big image”
+		// zostaje jako zabezpieczenie, gdyby optymalizacja została pominięta.
 		add_filter( 'big_image_size_threshold', $threshold_filter, 99 );
+
+		Image_Optimizer::enable();
 
 		$overrides = array(
 			'test_form' => false,
@@ -130,6 +133,8 @@ class Image_Handler {
 		);
 
 		$attachment_id = media_handle_upload( $field_name, $post_id, array(), $overrides );
+
+		Image_Optimizer::disable();
 
 		remove_filter( 'big_image_size_threshold', $threshold_filter, 99 );
 

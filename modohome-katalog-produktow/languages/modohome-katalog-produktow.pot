@@ -2,9 +2,9 @@
 # This file is distributed under the GPL-2.0-or-later license.
 msgid ""
 msgstr ""
-"Project-Id-Version: MODOhome Katalog Produktow 1.0.0\n"
+"Project-Id-Version: MODOhome Katalog Produktow 1.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/pprzybylowicz97/MODOHOME\n"
-"POT-Creation-Date: 2026-09-18 08:44+0000\n"
+"POT-Creation-Date: 2026-09-18 08:59+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -101,7 +101,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: admin/class-log-page.php:42 admin/class-log-page.php:43 admin/class-settings-page.php:210
+#: admin/class-log-page.php:42 admin/class-log-page.php:43 admin/class-settings-page.php:251
 msgid "Log aktywności"
 msgstr ""
 
@@ -454,62 +454,110 @@ msgid "Pozwól pracownikom tworzyć kategorie"
 msgstr ""
 
 #: admin/class-settings-page.php:189
-msgid "Maksymalny rozmiar zdjęcia (MB)"
-msgstr ""
-
-#: admin/class-settings-page.php:190
-msgid "Maksymalny wymiar obrazu (px)"
-msgstr ""
-
-#: admin/class-settings-page.php:191
 msgid "Automatyczne ukrycie po (dni, 0 = wyłączone)"
 msgstr ""
 
-#: admin/class-settings-page.php:193
+#: admin/class-settings-page.php:191
 msgid "Waluta"
 msgstr ""
 
-#: admin/class-settings-page.php:197
+#: admin/class-settings-page.php:195
 msgid "Pozycja waluty"
 msgstr ""
 
-#: admin/class-settings-page.php:199
+#: admin/class-settings-page.php:197
 msgid "Po cenie (1 200 zł)"
 msgstr ""
 
-#: admin/class-settings-page.php:200
+#: admin/class-settings-page.php:198
 msgid "Przed ceną (zł 1 200)"
 msgstr ""
 
+#: admin/class-settings-page.php:205
+msgid "Optymalizacja zdjęć"
+msgstr ""
+
 #: admin/class-settings-page.php:207
-msgid "Dane i zaawansowane"
+msgid "Zdjęcie jest skalowane i konwertowane zanim WordPress zapisze je na dysku, więc na serwerze nie zostaje wielki oryginał z telefonu."
 msgstr ""
 
-#: admin/class-settings-page.php:210
-msgid "Zapisuj zmiany produktów w logu"
-msgstr ""
-
-#: admin/class-settings-page.php:211
-msgid "Usuwanie danych"
-msgstr ""
-
-#: admin/class-settings-page.php:211
-msgid "Usuń produkty, kategorie i ustawienia przy odinstalowaniu wtyczki"
+#: admin/class-settings-page.php:209
+msgid "Uwaga: ten serwer nie obsługuje zapisu WebP — zdjęcia będą tylko skalowane."
 msgstr ""
 
 #: admin/class-settings-page.php:214
-msgid "Własny CSS"
+msgid "Maksymalny rozmiar przesyłanego pliku (MB)"
 msgstr ""
 
-#: admin/class-settings-page.php:224
-msgid "CSS ładuje się tylko tam, gdzie działa katalog. Zapis dostępny wyłącznie dla administratora."
+#: admin/class-settings-page.php:215
+msgid "Maksymalny wymiar obrazu (px)"
+msgstr ""
+
+#: admin/class-settings-page.php:220
+msgid "Konwersja do WebP"
+msgstr ""
+
+#: admin/class-settings-page.php:221
+msgid "Zapisuj przesyłane zdjęcia jako WebP (zwykle 25–35% mniejsze od JPG)"
+msgstr ""
+
+#: admin/class-settings-page.php:225
+msgid "Jakość WebP (40–100)"
+msgstr ""
+
+#: admin/class-settings-page.php:230
+msgid "Optymalizuj całą stronę"
 msgstr ""
 
 #: admin/class-settings-page.php:231
-msgid "Zapisz ustawienia"
+msgid "Stosuj skalowanie i konwersję także do zdjęć przesyłanych poza katalogiem (wpisy, strony, biblioteka mediów)"
+msgstr ""
+
+#: admin/class-settings-page.php:236
+msgid "Obsługa WebP na serwerze"
 msgstr ""
 
 #: admin/class-settings-page.php:239
+msgid "Dostępna"
+msgstr ""
+
+#: admin/class-settings-page.php:241
+msgid "Niedostępna"
+msgstr ""
+
+#: admin/class-settings-page.php:242
+msgid "Poproś hosting o włączenie GD z obsługą WebP lub rozszerzenia Imagick."
+msgstr ""
+
+#: admin/class-settings-page.php:248
+msgid "Dane i zaawansowane"
+msgstr ""
+
+#: admin/class-settings-page.php:251
+msgid "Zapisuj zmiany produktów w logu"
+msgstr ""
+
+#: admin/class-settings-page.php:252
+msgid "Usuwanie danych"
+msgstr ""
+
+#: admin/class-settings-page.php:252
+msgid "Usuń produkty, kategorie i ustawienia przy odinstalowaniu wtyczki"
+msgstr ""
+
+#: admin/class-settings-page.php:255
+msgid "Własny CSS"
+msgstr ""
+
+#: admin/class-settings-page.php:265
+msgid "CSS ładuje się tylko tam, gdzie działa katalog. Zapis dostępny wyłącznie dla administratora."
+msgstr ""
+
+#: admin/class-settings-page.php:272
+msgid "Zapisz ustawienia"
+msgstr ""
+
+#: admin/class-settings-page.php:280
 msgid "Przywróć ustawienia domyślne"
 msgstr ""
 
@@ -737,7 +785,7 @@ msgstr ""
 msgid "Nie udało się zapisać produktu. Spróbuj ponownie."
 msgstr ""
 
-#: includes/class-assets.php:209 includes/class-image-handler.php:91 includes/class-image-handler.php:152
+#: includes/class-assets.php:209 includes/class-image-handler.php:91 includes/class-image-handler.php:157
 msgid "Zdjęcie jest za duże. Maksymalny rozmiar to %s."
 msgstr ""
 
@@ -797,20 +845,24 @@ msgstr ""
 msgid "Plik nie jest prawidłowym zdjęciem."
 msgstr ""
 
-#: includes/class-image-handler.php:155
+#: includes/class-image-handler.php:160
 msgid "Przesyłanie zdjęcia zostało przerwane. Spróbuj ponownie."
 msgstr ""
 
-#: includes/class-image-handler.php:156
+#: includes/class-image-handler.php:161
 msgid "Serwer nie mógł zapisać pliku. Skontaktuj się z administratorem."
 msgstr ""
 
-#: includes/class-image-handler.php:157
+#: includes/class-image-handler.php:162
 msgid "Przesyłanie zablokowane przez konfigurację serwera."
 msgstr ""
 
-#: includes/class-image-handler.php:158
+#: includes/class-image-handler.php:163
 msgid "Nie udało się przesłać zdjęcia. Spróbuj ponownie."
+msgstr ""
+
+#: includes/class-image-optimizer.php:231
+msgid "Serwer nie obsługuje zapisu plików WebP (brak biblioteki GD z WebP lub Imagick). Konwersja jest pomijana — zdjęcia są tylko skalowane. Skontaktuj się z hostingiem, aby włączyć obsługę WebP."
 msgstr ""
 
 #: includes/class-post-type.php:39 includes/class-post-type.php:41

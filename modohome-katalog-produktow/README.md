@@ -4,7 +4,7 @@ Prosty katalog produktów sklepu stacjonarnego MODOhome dla WordPressa. Służy 
 do prezentacji produktów, zdjęć i cen — **bez WooCommerce, bez koszyka, bez płatności
 i bez stanów magazynowych**.
 
-- **Wersja:** 1.0.0
+- **Wersja:** 1.1.0
 - **Wymaga WordPressa:** 6.1 lub nowszego
 - **Wymaga PHP:** 8.1 lub nowszego
 - **Licencja:** GPL-2.0-or-later
@@ -22,6 +22,8 @@ i bez stanów magazynowych**.
 - Osobna rola **Pracownik katalogu** z własnymi uprawnieniami — pracownik widzi
   i edytuje wyłącznie swoje produkty.
 - Panel ustawień: kolory, kolumny, proporcje zdjęć, elementy karty, waluta, limity zdjęć.
+- **Automatyczna optymalizacja zdjęć**: skalowanie i konwersja do WebP jeszcze przed
+  zapisem na dysku — bez osobnej wtyczki i bez usług zewnętrznych.
 - Import i eksport CSV oraz log aktywności dla administratora.
 
 ---
@@ -197,17 +199,64 @@ tylko tam, gdzie działa katalog.
 
 ---
 
-## Zdjęcia
+## Zdjęcia i ich optymalizacja
 
-- Dozwolone formaty: **JPG, PNG, WebP**; typ sprawdzany po zawartości pliku, nie po nazwie.
-- Zdjęcia większe niż ustawiony wymiar (domyślnie **1600 px**) WordPress przeskalowuje,
-  zachowując proporcje.
-- Miniatury generuje WordPress; orientacja zdjęć z telefonu jest korygowana na podstawie
-  danych EXIF.
+- Dozwolone formaty wejściowe: **JPG, PNG, WebP**; typ sprawdzany po zawartości pliku,
+  nie po nazwie.
+- Zdjęcie jest **skalowane i konwertowane do WebP zanim WordPress zapisze je na dysku**.
+  Dzięki temu w bibliotece mediów nie ląduje wielomegabajtowy oryginał z telefonu.
+- Miniatury generuje WordPress — ponieważ plik źródłowy jest już w WebP, wszystkie
+  rozmiary pochodne też są w WebP.
+- Orientacja zdjęć z telefonu jest korygowana na podstawie danych EXIF.
 - Pliki trafiają wyłącznie do **biblioteki mediów** — wtyczka niczego nie zapisuje we
   własnym katalogu.
 - Zbyt duży lub nieprawidłowy plik kończy się czytelnym komunikatem, bez tworzenia
   pustego produktu.
+
+### Dlaczego optymalizacja dzieje się przed zapisem
+
+Gdyby skalowanie zostawić WordPressowi (mechanizm „big image”), oryginał **zostaje na
+dysku obok** wersji przeskalowanej — zdjęcie 8 MB zajmuje wtedy 8 MB plus wszystkie
+rozmiary pochodne. Wtyczka przetwarza plik tymczasowy jeszcze przed przeniesieniem go
+do katalogu uploadów, więc na serwerze zostaje wyłącznie mała wersja.
+
+Zmierzone na zdjęciu testowym 4000×3000: **2,7 MB → 0,2 MB** (8% oryginału),
+proporcje zachowane, dłuższy bok przycięty do 1600 px.
+
+### Ustawienia optymalizacji
+
+**Produkty → Ustawienia katalogu → Optymalizacja zdjęć**:
+
+| Ustawienie | Domyślnie | Opis |
+|---|---|---|
+| Maksymalny rozmiar przesyłanego pliku | 10 MB | Limit dla osoby wysyłającej; nigdy nie przekroczy limitu serwera. |
+| Maksymalny wymiar obrazu | 1600 px | Dłuższy bok po przeskalowaniu. |
+| Konwersja do WebP | włączona | Zapis w WebP zamiast JPG/PNG. |
+| Jakość WebP | 82 | Zakres 40–100. Poniżej 70 widać artefakty, powyżej 90 pliki rosną bez zysku. |
+| Optymalizuj całą stronę | wyłączona | Rozszerza skalowanie i konwersję na **wszystkie** zdjęcia wysyłane do WordPressa, nie tylko produktowe. |
+
+Strona ustawień pokazuje, czy serwer w ogóle obsługuje zapis WebP (wymaga GD z WebP
+albo rozszerzenia Imagick). Jeśli nie obsługuje, konwersja jest **po cichu pomijana** —
+zdjęcia są wtedy tylko skalowane, nic się nie psuje.
+
+Zabezpieczenie: jeżeli plik WebP wyszedłby większy od oryginału, a zdjęcia nie trzeba
+było skalować, wtyczka zostawia oryginał.
+
+### Czy potrzebuję osobnej wtyczki do optymalizacji?
+
+Do samego katalogu — **nie**. Zdjęcia produktowe przechodzą przez jeden formularz
+i są optymalizowane u źródła.
+
+Osobna wtyczka ma sens, gdy chcesz dodatkowo: przerobić **zdjęcia już wgrane** wcześniej,
+serwować WebP z zachowaniem kopii JPG dla starych przeglądarek, albo optymalizować
+obrazy z motywu i innych wtyczek. Wtedy włącz opcję **Optymalizuj całą stronę** —
+w wielu przypadkach zastąpi to osobną wtyczkę.
+
+### Zdjęcia wgrane wcześniej
+
+Optymalizacja działa na **nowych** plikach. Zdjęcia wgrane przed włączeniem opcji
+zostają w dotychczasowym formacie. Żeby je przerobić, wgraj je ponownie albo użyj
+wtyczki do masowej konwersji — wtyczka katalogu nie rusza plików, które już są na dysku.
 
 ---
 
@@ -255,6 +304,7 @@ modohome-katalog-produktow/
 │   ├── class-product-actions.php    Status, kosz, duplikat, zmiana ceny
 │   ├── class-query.php              Zapytania katalogu
 │   ├── class-image-handler.php      Przesyłanie i walidacja zdjęć
+│   ├── class-image-optimizer.php    Skalowanie i konwersja do WebP
 │   ├── class-activity-log.php       Log aktywności
 │   ├── class-shortcodes.php         Rejestracja shortcode’ów
 │   ├── class-ajax.php               Punkty końcowe AJAX
@@ -319,6 +369,8 @@ Wtyczka użyje wersji z motywu, więc aktualizacja nie nadpisze Twoich zmian.
   i na ekranach wtyczki w panelu.
 - Front działa bez jQuery — czysty JavaScript.
 - Liczniki produktów w kategoriach są cache’owane na 5 minut.
+- Zdjęcia są zmniejszane i konwertowane do WebP przed zapisem, więc katalog uploadów
+  nie puchnie od zdjęć z telefonu.
 - Wtyczka nie wymaga WooCommerce ani żadnego zewnętrznego frameworka.
 
 ---
@@ -338,6 +390,10 @@ Limit i tak nie przekroczy limitu serwera (`upload_max_filesize`).
 **Produkty pracowników nie pojawiają się w katalogu.** Sprawdź ustawienie „Publikacja
 produktów pracowników” — przy wyłączonym czekają na zatwierdzenie w **Produkty → Wszystkie**
 ze statusem „Oczekujące”.
+
+**Zdjęcia nie zapisują się w WebP.** Sprawdź wiersz „Obsługa WebP na serwerze”
+w ustawieniach. Jeśli pokazuje „Niedostępna”, hosting musi włączyć GD z obsługą WebP
+albo rozszerzenie Imagick. Do tego czasu zdjęcia są tylko skalowane.
 
 **Zmiana ustawienia podstron produktu nic nie dała.** Wejdź w **Ustawienia → Bezpośrednie
 odnośniki** i zapisz, żeby odświeżyć reguły przepisywania.
