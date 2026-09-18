@@ -1,0 +1,1162 @@
+# Copyright (C) MODOhome
+# This file is distributed under the GPL-2.0-or-later license.
+msgid ""
+msgstr ""
+"Project-Id-Version: MODOhome Katalog Produktow 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/pprzybylowicz97/MODOHOME\n"
+"POT-Creation-Date: 2026-09-18 08:44+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Domain: modohome-katalog-produktow\n"
+
+#: admin/class-admin.php:71
+msgid "Ustawienia"
+msgstr ""
+
+#: admin/class-columns.php:57
+msgid "Zdjęcie"
+msgstr ""
+
+#: admin/class-columns.php:58
+msgid "Nazwa"
+msgstr ""
+
+#: admin/class-columns.php:59 admin/class-metaboxes.php:80 templates/my-products.php:84 templates/product-form.php:111
+msgid "Cena"
+msgstr ""
+
+#: admin/class-columns.php:60 admin/class-metaboxes.php:98 admin/class-settings-page.php:130 templates/my-products.php:91 templates/product-form.php:128
+msgid "Cena poprzednia"
+msgstr ""
+
+#: admin/class-columns.php:61 admin/class-settings-page.php:128 templates/product-form.php:143
+msgid "Kategoria"
+msgstr ""
+
+#: admin/class-columns.php:62 admin/class-metaboxes.php:115 templates/product-form.php:191
+msgid "Etykieta"
+msgstr ""
+
+#: admin/class-columns.php:63 admin/class-metaboxes.php:129 templates/my-products.php:105 templates/product-form.php:204
+msgid "Dostępność"
+msgstr ""
+
+#: admin/class-columns.php:64
+msgid "Autor"
+msgstr ""
+
+#: admin/class-columns.php:65 admin/class-settings-page.php:133
+msgid "Data dodania"
+msgstr ""
+
+#: admin/class-columns.php:171 includes/class-taxonomy.php:49
+msgid "Wszystkie kategorie"
+msgstr ""
+
+#: admin/class-columns.php:181
+msgid "Każda dostępność"
+msgstr ""
+
+#: admin/class-columns.php:197
+msgid "Wszyscy autorzy"
+msgstr ""
+
+#: admin/class-columns.php:253
+msgid "Zmień dostępność na: %s"
+msgstr ""
+
+#: admin/class-columns.php:258
+msgid "Duplikuj produkty"
+msgstr ""
+
+#: admin/class-columns.php:346 templates/my-products.php:128
+msgid "Oznacz jako sprzedany"
+msgstr ""
+
+#: admin/class-columns.php:358
+msgid "Duplikuj produkt"
+msgstr ""
+
+#: admin/class-columns.php:424
+msgid "Zaktualizowano %d produkt."
+msgid_plural "Zaktualizowano %d produktów."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: admin/class-columns.php:437
+msgid "Zduplikowano %d produkt."
+msgid_plural "Zduplikowano %d produktów."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: admin/class-columns.php:450
+msgid "Nie udało się zmienić %d produktu — brak uprawnień."
+msgid_plural "Nie udało się zmienić %d produktów — brak uprawnień."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: admin/class-log-page.php:42 admin/class-log-page.php:43 admin/class-settings-page.php:210
+msgid "Log aktywności"
+msgstr ""
+
+#: admin/class-log-page.php:55 admin/class-settings-page.php:69 admin/class-tools-page.php:78
+msgid "Brak uprawnień do tej strony."
+msgstr ""
+
+#: admin/class-log-page.php:66
+msgid "Log aktywności katalogu"
+msgstr ""
+
+#: admin/class-log-page.php:69
+msgid "Log zapisuje wyłącznie autora zmiany, produkt i rodzaj zdarzenia. Nie przechowuje adresów IP ani innych danych osobowych."
+msgstr ""
+
+#: admin/class-log-page.php:73
+msgid "Log jest pusty."
+msgstr ""
+
+#: admin/class-log-page.php:78
+msgid "Data"
+msgstr ""
+
+#: admin/class-log-page.php:79
+msgid "Użytkownik"
+msgstr ""
+
+#: admin/class-log-page.php:80 includes/class-post-type.php:40
+msgid "Produkt"
+msgstr ""
+
+#: admin/class-log-page.php:81
+msgid "Zdarzenie"
+msgstr ""
+
+#: admin/class-log-page.php:82
+msgid "Szczegóły"
+msgstr ""
+
+#: admin/class-log-page.php:91
+msgid "System"
+msgstr ""
+
+#: admin/class-log-page.php:138
+msgid "Wyczyść log"
+msgstr ""
+
+#: admin/class-log-page.php:150 admin/class-tools-page.php:165 admin/class-tools-page.php:236
+msgid "Brak uprawnień."
+msgstr ""
+
+#: admin/class-metaboxes.php:44
+msgid "Dane produktu"
+msgstr ""
+
+#: admin/class-metaboxes.php:53
+msgid "Galeria zdjęć"
+msgstr ""
+
+#: admin/class-metaboxes.php:118 templates/product-form.php:195
+msgid "— brak —"
+msgstr ""
+
+#: admin/class-metaboxes.php:143 templates/my-products.php:98 templates/product-form.php:178
+msgid "Krótki opis"
+msgstr ""
+
+#: admin/class-metaboxes.php:154
+msgid "Zdjęcie główne i kategorię ustawisz w panelach po prawej stronie. Kolejność wyświetlania zmienisz w panelu „Atrybuty”."
+msgstr ""
+
+#: admin/class-metaboxes.php:185
+msgid "Usuń zdjęcie z galerii"
+msgstr ""
+
+#: admin/class-metaboxes.php:191
+msgid "Dodaj zdjęcia"
+msgstr ""
+
+#: admin/class-metaboxes.php:264 includes/class-product-actions.php:55
+msgid "Status: %1$s → %2$s"
+msgstr ""
+
+#: admin/class-settings-page.php:41 admin/class-settings-page.php:42
+msgid "Ustawienia katalogu"
+msgstr ""
+
+#: admin/class-settings-page.php:76
+msgid "Ustawienia katalogu MODOhome"
+msgstr ""
+
+#: admin/class-settings-page.php:79
+msgid "Shortcode katalogu:"
+msgstr ""
+
+#: admin/class-settings-page.php:81
+msgid "formularz dodawania:"
+msgstr ""
+
+#: admin/class-settings-page.php:83
+msgid "panel pracownika:"
+msgstr ""
+
+#: admin/class-settings-page.php:90
+msgid "Wygląd"
+msgstr ""
+
+#: admin/class-settings-page.php:93
+msgid "Kolor główny"
+msgstr ""
+
+#: admin/class-settings-page.php:94
+msgid "Kolor tekstu"
+msgstr ""
+
+#: admin/class-settings-page.php:95
+msgid "Kolor tła"
+msgstr ""
+
+#: admin/class-settings-page.php:96
+msgid "Kolor kart"
+msgstr ""
+
+#: admin/class-settings-page.php:97
+msgid "Kolor etykiet"
+msgstr ""
+
+#: admin/class-settings-page.php:99
+msgid "Kolumny — komputer"
+msgstr ""
+
+#: admin/class-settings-page.php:100
+msgid "Kolumny — tablet"
+msgstr ""
+
+#: admin/class-settings-page.php:101
+msgid "Kolumny — telefon"
+msgstr ""
+
+#: admin/class-settings-page.php:103
+msgid "Proporcje zdjęć"
+msgstr ""
+
+#: admin/class-settings-page.php:107
+msgid "Sposób przycinania zdjęć"
+msgstr ""
+
+#: admin/class-settings-page.php:109
+msgid "Wypełnij kadr (przycina)"
+msgstr ""
+
+#: admin/class-settings-page.php:110
+msgid "Zmieść całe zdjęcie"
+msgstr ""
+
+#: admin/class-settings-page.php:115
+msgid "Minimalna wysokość kart (px, 0 = automatycznie)"
+msgstr ""
+
+#: admin/class-settings-page.php:116
+msgid "Promień zaokrąglenia (px)"
+msgstr ""
+
+#: admin/class-settings-page.php:117
+msgid "Odstęp między kartami (px)"
+msgstr ""
+
+#: admin/class-settings-page.php:119
+msgid "Cień kart"
+msgstr ""
+
+#: admin/class-settings-page.php:119
+msgid "Włącz cień pod kartami"
+msgstr ""
+
+#: admin/class-settings-page.php:120
+msgid "Nagłówek katalogu"
+msgstr ""
+
+#: admin/class-settings-page.php:121
+msgid "Tekst nad katalogiem"
+msgstr ""
+
+#: admin/class-settings-page.php:125
+msgid "Elementy karty produktu"
+msgstr ""
+
+#: admin/class-settings-page.php:128
+msgid "Pokazuj kategorię na karcie"
+msgstr ""
+
+#: admin/class-settings-page.php:129
+msgid "Opis"
+msgstr ""
+
+#: admin/class-settings-page.php:129
+msgid "Pokazuj skrócony opis na karcie"
+msgstr ""
+
+#: admin/class-settings-page.php:130
+msgid "Pokazuj przekreśloną cenę poprzednią"
+msgstr ""
+
+#: admin/class-settings-page.php:131
+msgid "Etykiety"
+msgstr ""
+
+#: admin/class-settings-page.php:131
+msgid "Pokazuj etykiety produktów"
+msgstr ""
+
+#: admin/class-settings-page.php:132
+msgid "Status dostępności"
+msgstr ""
+
+#: admin/class-settings-page.php:132
+msgid "Pokazuj status „Sprzedany” i „Zarezerwowany”"
+msgstr ""
+
+#: admin/class-settings-page.php:133
+msgid "Pokazuj datę dodania produktu"
+msgstr ""
+
+#: admin/class-settings-page.php:134 templates/product-card.php:120
+msgid "Zobacz szczegóły"
+msgstr ""
+
+#: admin/class-settings-page.php:134
+msgid "Pokazuj informację „Zobacz szczegóły”"
+msgstr ""
+
+#: admin/class-settings-page.php:135
+msgid "Oznaczenie „Dodano dzisiaj”"
+msgstr ""
+
+#: admin/class-settings-page.php:135
+msgid "Wyróżniaj produkty dodane dzisiaj"
+msgstr ""
+
+#: admin/class-settings-page.php:139
+msgid "Działanie katalogu"
+msgstr ""
+
+#: admin/class-settings-page.php:142
+msgid "Produktów na stronę"
+msgstr ""
+
+#: admin/class-settings-page.php:147
+msgid "Domyślne sortowanie"
+msgstr ""
+
+#: admin/class-settings-page.php:149 templates/catalog.php:79
+msgid "Najnowsze"
+msgstr ""
+
+#: admin/class-settings-page.php:150 templates/catalog.php:80
+msgid "Cena rosnąco"
+msgstr ""
+
+#: admin/class-settings-page.php:151 templates/catalog.php:81
+msgid "Cena malejąco"
+msgstr ""
+
+#: admin/class-settings-page.php:152
+msgid "Własna kolejność"
+msgstr ""
+
+#: admin/class-settings-page.php:160
+msgid "Produkty sprzedane"
+msgstr ""
+
+#: admin/class-settings-page.php:162
+msgid "Pokazuj z etykietą „Sprzedany”"
+msgstr ""
+
+#: admin/class-settings-page.php:163
+msgid "Ukrywaj w katalogu"
+msgstr ""
+
+#: admin/class-settings-page.php:171
+msgid "Szczegóły produktu"
+msgstr ""
+
+#: admin/class-settings-page.php:173
+msgid "Okno modalne"
+msgstr ""
+
+#: admin/class-settings-page.php:174
+msgid "Podstrona produktu"
+msgstr ""
+
+#: admin/class-settings-page.php:175
+msgid "Bez szczegółów"
+msgstr ""
+
+#: admin/class-settings-page.php:180
+msgid "Podstrony produktów"
+msgstr ""
+
+#: admin/class-settings-page.php:180
+msgid "Włącz publiczne podstrony pojedynczych produktów"
+msgstr ""
+
+#: admin/class-settings-page.php:181
+msgid "Wyszukiwarka"
+msgstr ""
+
+#: admin/class-settings-page.php:181
+msgid "Pokazuj pole wyszukiwania w katalogu"
+msgstr ""
+
+#: admin/class-settings-page.php:182
+msgid "Filtry"
+msgstr ""
+
+#: admin/class-settings-page.php:182
+msgid "Pokazuj filtry kategorii i sortowanie"
+msgstr ""
+
+#: admin/class-settings-page.php:183
+msgid "Przycisk „Pokaż więcej”"
+msgstr ""
+
+#: admin/class-settings-page.php:183
+msgid "Doładowuj produkty przyciskiem zamiast przeładowania strony"
+msgstr ""
+
+#: admin/class-settings-page.php:184
+msgid "Licznik produktów"
+msgstr ""
+
+#: admin/class-settings-page.php:184
+msgid "Pokazuj liczbę produktów przy kategoriach"
+msgstr ""
+
+#: admin/class-settings-page.php:186
+msgid "Publikacja produktów pracowników"
+msgstr ""
+
+#: admin/class-settings-page.php:186
+msgid "Publikuj od razu, bez zatwierdzania"
+msgstr ""
+
+#: admin/class-settings-page.php:187
+msgid "Kategorie przez pracowników"
+msgstr ""
+
+#: admin/class-settings-page.php:187
+msgid "Pozwól pracownikom tworzyć kategorie"
+msgstr ""
+
+#: admin/class-settings-page.php:189
+msgid "Maksymalny rozmiar zdjęcia (MB)"
+msgstr ""
+
+#: admin/class-settings-page.php:190
+msgid "Maksymalny wymiar obrazu (px)"
+msgstr ""
+
+#: admin/class-settings-page.php:191
+msgid "Automatyczne ukrycie po (dni, 0 = wyłączone)"
+msgstr ""
+
+#: admin/class-settings-page.php:193
+msgid "Waluta"
+msgstr ""
+
+#: admin/class-settings-page.php:197
+msgid "Pozycja waluty"
+msgstr ""
+
+#: admin/class-settings-page.php:199
+msgid "Po cenie (1 200 zł)"
+msgstr ""
+
+#: admin/class-settings-page.php:200
+msgid "Przed ceną (zł 1 200)"
+msgstr ""
+
+#: admin/class-settings-page.php:207
+msgid "Dane i zaawansowane"
+msgstr ""
+
+#: admin/class-settings-page.php:210
+msgid "Zapisuj zmiany produktów w logu"
+msgstr ""
+
+#: admin/class-settings-page.php:211
+msgid "Usuwanie danych"
+msgstr ""
+
+#: admin/class-settings-page.php:211
+msgid "Usuń produkty, kategorie i ustawienia przy odinstalowaniu wtyczki"
+msgstr ""
+
+#: admin/class-settings-page.php:214
+msgid "Własny CSS"
+msgstr ""
+
+#: admin/class-settings-page.php:224
+msgid "CSS ładuje się tylko tam, gdzie działa katalog. Zapis dostępny wyłącznie dla administratora."
+msgstr ""
+
+#: admin/class-settings-page.php:231
+msgid "Zapisz ustawienia"
+msgstr ""
+
+#: admin/class-settings-page.php:239
+msgid "Przywróć ustawienia domyślne"
+msgstr ""
+
+#: admin/class-tools-page.php:65 admin/class-tools-page.php:66
+msgid "Import i eksport"
+msgstr ""
+
+#: admin/class-tools-page.php:89
+msgid "Import i eksport produktów"
+msgstr ""
+
+#: admin/class-tools-page.php:101
+msgid "Zaimportowano: %1$d. Pominięte duplikaty: %2$d. Wiersze z błędami: %3$d."
+msgstr ""
+
+#: admin/class-tools-page.php:111
+msgid "Eksport"
+msgstr ""
+
+#: admin/class-tools-page.php:112
+msgid "Pobiera wszystkie produkty jako plik CSV (kodowanie UTF-8, separator: średnik)."
+msgstr ""
+
+#: admin/class-tools-page.php:117
+msgid "Pobierz plik CSV"
+msgstr ""
+
+#: admin/class-tools-page.php:122
+msgid "Import"
+msgstr ""
+
+#: admin/class-tools-page.php:124
+msgid "Plik musi zawierać nagłówek z kolumnami:"
+msgstr ""
+
+#: admin/class-tools-page.php:128
+msgid "Wymagane są: nazwa, cena i kategoria. Kategoria może być nazwą lub slugiem — nieistniejące kategorie zostaną utworzone. Kolumna „zdjecie” przyjmuje adres URL obrazka już obecnego w bibliotece mediów."
+msgstr ""
+
+#: admin/class-tools-page.php:137
+msgid "Plik CSV"
+msgstr ""
+
+#: admin/class-tools-page.php:141
+msgid "Duplikaty"
+msgstr ""
+
+#: admin/class-tools-page.php:145
+msgid "Dodaj mimo istniejącego produktu o tej samej nazwie"
+msgstr ""
+
+#: admin/class-tools-page.php:148
+msgid "Domyślnie produkty o nazwie już obecnej w katalogu są pomijane, a ich liczba pokazana w podsumowaniu."
+msgstr ""
+
+#: admin/class-tools-page.php:154
+msgid "Importuj produkty"
+msgstr ""
+
+#: admin/class-tools-page.php:188
+msgid "Nie udało się przygotować pliku."
+msgstr ""
+
+#: admin/class-tools-page.php:365
+msgid "Import z pliku CSV"
+msgstr ""
+
+#: admin/class-tools-page.php:464
+msgid "Nie wybrano pliku."
+msgstr ""
+
+#: admin/class-tools-page.php:465
+msgid "Nie udało się przesłać pliku."
+msgstr ""
+
+#: admin/class-tools-page.php:466
+msgid "Plik musi mieć rozszerzenie .csv."
+msgstr ""
+
+#: admin/class-tools-page.php:467
+msgid "Nie udało się odczytać pliku."
+msgstr ""
+
+#: admin/class-tools-page.php:468
+msgid "Plik jest pusty."
+msgstr ""
+
+#: admin/class-tools-page.php:469
+msgid "Brakuje wymaganych kolumn: nazwa, cena, kategoria."
+msgstr ""
+
+#: admin/class-tools-page.php:470
+msgid "Import nie powiódł się."
+msgstr ""
+
+#: includes/class-activity-log.php:132
+msgid "Produkt opublikowany"
+msgstr ""
+
+#: includes/class-activity-log.php:147
+msgid "Produkt usunięty trwale"
+msgstr ""
+
+#: includes/class-activity-log.php:160 includes/class-ajax.php:399 includes/class-assets.php:216
+msgid "Produkt przeniesiony do kosza"
+msgstr ""
+
+#: includes/class-activity-log.php:170
+msgid "Dodanie produktu"
+msgstr ""
+
+#: includes/class-activity-log.php:171
+msgid "Zmiana ceny"
+msgstr ""
+
+#: includes/class-activity-log.php:172
+msgid "Zmiana statusu"
+msgstr ""
+
+#: includes/class-activity-log.php:173
+msgid "Usunięcie produktu"
+msgstr ""
+
+#: includes/class-activity-log.php:174
+msgid "Duplikat produktu"
+msgstr ""
+
+#: includes/class-activity-log.php:175
+msgid "Import z CSV"
+msgstr ""
+
+#: includes/class-ajax.php:139 includes/class-ajax.php:146 includes/class-ajax.php:272 includes/class-product-actions.php:33 includes/class-product-actions.php:77 includes/class-product-actions.php:108
+msgid "Nie znaleziono produktu."
+msgstr ""
+
+#: includes/class-ajax.php:164
+msgid "Brak uprawnień do dodawania produktów."
+msgstr ""
+
+#: includes/class-ajax.php:172 includes/class-ajax.php:284 includes/class-ajax.php:285 includes/class-assets.php:212
+msgid "Podaj nazwę produktu."
+msgstr ""
+
+#: includes/class-ajax.php:176 includes/class-ajax.php:294 includes/class-ajax.php:295 includes/class-assets.php:213
+msgid "Podaj cenę produktu."
+msgstr ""
+
+#: includes/class-ajax.php:180 includes/class-assets.php:214
+msgid "Wybierz kategorię produktu."
+msgstr ""
+
+#: includes/class-ajax.php:184 includes/class-assets.php:211
+msgid "Dodaj zdjęcie produktu."
+msgstr ""
+
+#: includes/class-ajax.php:190
+msgid "Uzupełnij wymagane pola."
+msgstr ""
+
+#: includes/class-ajax.php:248
+msgid "Nie udało się odczytać zapisanego produktu."
+msgstr ""
+
+#: includes/class-ajax.php:254
+msgid "Produkt został dodany i czeka na zatwierdzenie"
+msgstr ""
+
+#: includes/class-ajax.php:255 includes/class-assets.php:205 templates/product-form.php:222
+msgid "Produkt został dodany"
+msgstr ""
+
+#: includes/class-ajax.php:276 includes/class-product-actions.php:37
+msgid "Brak uprawnień do edycji tego produktu."
+msgstr ""
+
+#: includes/class-ajax.php:356 includes/class-assets.php:206
+msgid "Zmiany zapisane"
+msgstr ""
+
+#: includes/class-ajax.php:379
+msgid "Status zaktualizowany"
+msgstr ""
+
+#: includes/class-ajax.php:419 includes/class-assets.php:217
+msgid "Produkt zduplikowany"
+msgstr ""
+
+#: includes/class-assets.php:180
+msgid "Wczytywanie…"
+msgstr ""
+
+#: includes/class-assets.php:181 templates/catalog.php:142
+msgid "Pokaż więcej"
+msgstr ""
+
+#: includes/class-assets.php:182 includes/class-post-type.php:49 templates/catalog.php:132
+msgid "Nie znaleziono produktów."
+msgstr ""
+
+#: includes/class-assets.php:183
+msgid "Coś poszło nie tak. Odśwież stronę i spróbuj ponownie."
+msgstr ""
+
+#: includes/class-assets.php:184
+msgid "Zamknij"
+msgstr ""
+
+#: includes/class-assets.php:185 templates/product-modal.php:45
+msgid "Poprzednie zdjęcie"
+msgstr ""
+
+#: includes/class-assets.php:186 templates/product-modal.php:46
+msgid "Następne zdjęcie"
+msgstr ""
+
+#: includes/class-assets.php:204
+msgid "Zapisywanie…"
+msgstr ""
+
+#: includes/class-assets.php:207 templates/product-form.php:234
+msgid "Dodaj kolejny produkt"
+msgstr ""
+
+#: includes/class-assets.php:208
+msgid "Nie udało się zapisać produktu. Spróbuj ponownie."
+msgstr ""
+
+#: includes/class-assets.php:209 includes/class-image-handler.php:91 includes/class-image-handler.php:152
+msgid "Zdjęcie jest za duże. Maksymalny rozmiar to %s."
+msgstr ""
+
+#: includes/class-assets.php:210 includes/class-image-handler.php:113
+msgid "Dozwolone formaty zdjęć to JPG, PNG i WebP."
+msgstr ""
+
+#: includes/class-assets.php:215
+msgid "Przenieść ten produkt do kosza?"
+msgstr ""
+
+#: includes/class-assets.php:318
+msgid "Wybierz zdjęcie"
+msgstr ""
+
+#: includes/class-assets.php:319
+msgid "Użyj tego zdjęcia"
+msgstr ""
+
+#: includes/class-assets.php:320
+msgid "Wybierz zdjęcia do galerii"
+msgstr ""
+
+#: includes/class-assets.php:321
+msgid "Dodaj do galerii"
+msgstr ""
+
+#: includes/class-assets.php:322
+msgid "Przywrócić wszystkie ustawienia domyślne? Tej operacji nie można cofnąć."
+msgstr ""
+
+#: includes/class-assets.php:323
+msgid "Usuń"
+msgstr ""
+
+#: includes/class-cron.php:80
+msgid "Automatyczne ukrycie po %d dniach"
+msgstr ""
+
+#: includes/class-image-handler.php:59
+msgid "Brak uprawnień do przesyłania plików."
+msgstr ""
+
+#: includes/class-image-handler.php:63 includes/class-image-handler.php:72
+msgid "Nie wybrano zdjęcia."
+msgstr ""
+
+#: includes/class-image-handler.php:83
+msgid "Przesłany plik jest pusty."
+msgstr ""
+
+#: includes/class-image-handler.php:100
+msgid "Nieprawidłowy plik."
+msgstr ""
+
+#: includes/class-image-handler.php:107
+msgid "Plik nie jest prawidłowym zdjęciem."
+msgstr ""
+
+#: includes/class-image-handler.php:155
+msgid "Przesyłanie zdjęcia zostało przerwane. Spróbuj ponownie."
+msgstr ""
+
+#: includes/class-image-handler.php:156
+msgid "Serwer nie mógł zapisać pliku. Skontaktuj się z administratorem."
+msgstr ""
+
+#: includes/class-image-handler.php:157
+msgid "Przesyłanie zablokowane przez konfigurację serwera."
+msgstr ""
+
+#: includes/class-image-handler.php:158
+msgid "Nie udało się przesłać zdjęcia. Spróbuj ponownie."
+msgstr ""
+
+#: includes/class-post-type.php:39 includes/class-post-type.php:41
+msgid "Produkty"
+msgstr ""
+
+#: includes/class-post-type.php:42
+msgid "Dodaj nowy"
+msgstr ""
+
+#: includes/class-post-type.php:43
+msgid "Dodaj nowy produkt"
+msgstr ""
+
+#: includes/class-post-type.php:44
+msgid "Edytuj produkt"
+msgstr ""
+
+#: includes/class-post-type.php:45
+msgid "Nowy produkt"
+msgstr ""
+
+#: includes/class-post-type.php:46
+msgid "Zobacz produkt"
+msgstr ""
+
+#: includes/class-post-type.php:47
+msgid "Zobacz produkty"
+msgstr ""
+
+#: includes/class-post-type.php:48 templates/catalog.php:60
+msgid "Szukaj produktów"
+msgstr ""
+
+#: includes/class-post-type.php:50
+msgid "Brak produktów w koszu."
+msgstr ""
+
+#: includes/class-post-type.php:51
+msgid "Wszystkie produkty"
+msgstr ""
+
+#: includes/class-post-type.php:52
+msgid "Zdjęcie główne"
+msgstr ""
+
+#: includes/class-post-type.php:53
+msgid "Ustaw zdjęcie główne"
+msgstr ""
+
+#: includes/class-post-type.php:54
+msgid "Usuń zdjęcie główne"
+msgstr ""
+
+#: includes/class-post-type.php:55
+msgid "Użyj jako zdjęcia głównego"
+msgstr ""
+
+#: includes/class-post-type.php:56
+msgid "Lista produktów"
+msgstr ""
+
+#: includes/class-post-type.php:57 includes/class-post-type.php:133
+msgid "Produkt opublikowany."
+msgstr ""
+
+#: includes/class-post-type.php:58 includes/class-post-type.php:128 includes/class-post-type.php:131
+msgid "Produkt zaktualizowany."
+msgstr ""
+
+#: includes/class-post-type.php:63
+msgid "Produkty katalogu MODOhome."
+msgstr ""
+
+#: includes/class-post-type.php:129
+msgid "Pole zaktualizowane."
+msgstr ""
+
+#: includes/class-post-type.php:130
+msgid "Pole usunięte."
+msgstr ""
+
+#: includes/class-post-type.php:132
+msgid "Przywrócono produkt z wersji archiwalnej."
+msgstr ""
+
+#: includes/class-post-type.php:134
+msgid "Produkt zapisany."
+msgstr ""
+
+#: includes/class-post-type.php:135
+msgid "Produkt przesłany do zatwierdzenia."
+msgstr ""
+
+#: includes/class-post-type.php:136
+msgid "Publikacja produktu zaplanowana."
+msgstr ""
+
+#: includes/class-post-type.php:137
+msgid "Szkic produktu zaktualizowany."
+msgstr ""
+
+#: includes/class-product-actions.php:81
+msgid "Brak uprawnień do usunięcia tego produktu."
+msgstr ""
+
+#: includes/class-product-actions.php:87
+msgid "Nie udało się przenieść produktu do kosza."
+msgstr ""
+
+#: includes/class-product-actions.php:112
+msgid "Brak uprawnień do duplikowania tego produktu."
+msgstr ""
+
+#: includes/class-product-actions.php:116
+msgid "Brak uprawnień do tworzenia produktów."
+msgstr ""
+
+#: includes/class-product-actions.php:124
+msgid "%s (kopia)"
+msgstr ""
+
+#: includes/class-product-actions.php:175
+msgid "Kopia produktu #%d"
+msgstr ""
+
+#: includes/class-product-actions.php:204
+msgid "Cena: %1$s → %2$s"
+msgstr ""
+
+#: includes/class-product.php:81
+msgid "Nowość"
+msgstr ""
+
+#: includes/class-product.php:82
+msgid "Promocja"
+msgstr ""
+
+#: includes/class-product.php:83
+msgid "Ostatnia sztuka"
+msgstr ""
+
+#: includes/class-product.php:84
+msgid "Bestseller"
+msgstr ""
+
+#: includes/class-product.php:85
+msgid "Dostępny od ręki"
+msgstr ""
+
+#: includes/class-product.php:96
+msgid "Dostępny"
+msgstr ""
+
+#: includes/class-product.php:97
+msgid "Zarezerwowany"
+msgstr ""
+
+#: includes/class-product.php:98
+msgid "Sprzedany"
+msgstr ""
+
+#: includes/class-product.php:99
+msgid "Ukryty"
+msgstr ""
+
+#: includes/class-roles.php:116
+msgid "Pracownik katalogu"
+msgstr ""
+
+#: includes/class-taxonomy.php:46
+msgid "Kategorie produktów"
+msgstr ""
+
+#: includes/class-taxonomy.php:47
+msgid "Kategoria produktu"
+msgstr ""
+
+#: includes/class-taxonomy.php:48
+msgid "Kategorie"
+msgstr ""
+
+#: includes/class-taxonomy.php:50
+msgid "Edytuj kategorię"
+msgstr ""
+
+#: includes/class-taxonomy.php:51
+msgid "Zaktualizuj kategorię"
+msgstr ""
+
+#: includes/class-taxonomy.php:52
+msgid "Dodaj nową kategorię"
+msgstr ""
+
+#: includes/class-taxonomy.php:53
+msgid "Nazwa nowej kategorii"
+msgstr ""
+
+#: includes/class-taxonomy.php:54
+msgid "Kategoria nadrzędna"
+msgstr ""
+
+#: includes/class-taxonomy.php:55
+msgid "Kategoria nadrzędna:"
+msgstr ""
+
+#: includes/class-taxonomy.php:56
+msgid "Szukaj kategorii"
+msgstr ""
+
+#: includes/class-taxonomy.php:57
+msgid "Nie znaleziono kategorii."
+msgstr ""
+
+#: includes/class-taxonomy.php:58
+msgid "← Wróć do kategorii"
+msgstr ""
+
+#: includes/class-taxonomy.php:103 includes/class-taxonomy.php:119 includes/class-taxonomy.php:156
+msgid "Kolejność"
+msgstr ""
+
+#: includes/class-taxonomy.php:105 includes/class-taxonomy.php:122
+msgid "Niższa liczba oznacza wcześniejszą pozycję na liście kategorii."
+msgstr ""
+
+#: modohome-katalog-produktow.php:41
+msgid "MODOhome Katalog Produktów wymaga PHP 8.1 lub nowszego."
+msgstr ""
+
+#: public/class-my-products.php:36
+msgid "Zaloguj się, aby zobaczyć swoje produkty."
+msgstr ""
+
+#: public/class-my-products.php:42
+msgid "Twoje konto nie ma uprawnień do zarządzania produktami."
+msgstr ""
+
+#: public/class-my-products.php:67
+msgid "Moje produkty"
+msgstr ""
+
+#: public/class-product-form.php:38
+msgid "Aby dodać produkt, zaloguj się."
+msgstr ""
+
+#: public/class-product-form.php:40
+msgid "Zaloguj się"
+msgstr ""
+
+#: public/class-product-form.php:45
+msgid "Twoje konto nie ma uprawnień do dodawania produktów."
+msgstr ""
+
+#: public/class-product-form.php:58 templates/product-form.php:216
+msgid "Dodaj produkt"
+msgstr ""
+
+#: templates/catalog.php:67
+msgid "Szukaj produktu…"
+msgstr ""
+
+#: templates/catalog.php:76
+msgid "Sortowanie"
+msgstr ""
+
+#: templates/catalog.php:89
+msgid "Filtruj po kategorii"
+msgstr ""
+
+#: templates/catalog.php:91
+msgid "Wszystkie"
+msgstr ""
+
+#: templates/my-products.php:26
+msgid "Nie masz jeszcze żadnych produktów."
+msgstr ""
+
+#: templates/my-products.php:54
+msgid "Czeka na zatwierdzenie"
+msgstr ""
+
+#: templates/my-products.php:65
+msgid "Edytuj"
+msgstr ""
+
+#: templates/my-products.php:77 templates/product-form.php:95
+msgid "Nazwa produktu"
+msgstr ""
+
+#: templates/my-products.php:118
+msgid "Zmień zdjęcie"
+msgstr ""
+
+#: templates/my-products.php:123
+msgid "Zapisz zmiany"
+msgstr ""
+
+#: templates/my-products.php:131
+msgid "Duplikuj"
+msgstr ""
+
+#: templates/my-products.php:134
+msgid "Do kosza"
+msgstr ""
+
+#: templates/product-card.php:75
+msgid "Dodano dzisiaj"
+msgstr ""
+
+#: templates/product-form.php:43
+msgid "Dodane produkty trafiają do zatwierdzenia przez administratora."
+msgstr ""
+
+#: templates/product-form.php:58
+msgid "Dodaj zdjęcie lub zrób zdjęcie"
+msgstr ""
+
+#: templates/product-form.php:77
+msgid "JPG, PNG lub WebP. Maksymalnie %s."
+msgstr ""
+
+#: templates/product-form.php:86
+msgid "Usuń zdjęcie"
+msgstr ""
+
+#: templates/product-form.php:129 templates/product-form.php:179 templates/product-form.php:192
+msgid "(opcjonalnie)"
+msgstr ""
+
+#: templates/product-form.php:155
+msgid "— wybierz kategorię —"
+msgstr ""
+
+#: templates/product-form.php:166
+msgid "Nie ma jeszcze żadnych kategorii — dodaj je w panelu WordPressa."
+msgstr ""
+
+#: templates/product-form.php:168
+msgid "Nie ma jeszcze żadnych kategorii. Poproś administratora o ich dodanie."
+msgstr ""
+
+#: templates/product-modal.php:58
+msgid "Zdjęcie %d"
+msgstr ""
+
+#: templates/product-modal.php:120
+msgid "Dodano:"
+msgstr ""
