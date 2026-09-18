@@ -37,7 +37,7 @@ class Settings {
 			// Wygląd.
 			'primary_color'              => '#ef1616',
 			'text_color'                 => '#111111',
-			'bg_color'                   => '#ffffff',
+			'bg_color'                   => '#f4f2ee',
 			'card_color'                 => '#ffffff',
 			'badge_color'                => '#ef1616',
 			'columns_desktop'            => 4,
@@ -45,7 +45,7 @@ class Settings {
 			'columns_mobile'             => 2,
 			'image_ratio'                => '3:4',
 			'card_min_height'            => 0,
-			'border_radius'              => 4,
+			'border_radius'              => 2,
 			'grid_gap'                   => 20,
 			'image_fit'                  => 'cover',
 			'card_shadow'                => false,
@@ -59,7 +59,7 @@ class Settings {
 			'show_badges'                => true,
 			'show_availability'          => true,
 			'show_date'                  => false,
-			'show_details_button'        => true,
+			'show_details_button'        => false,
 
 			// Działanie katalogu.
 			'per_page'                   => 12,
@@ -77,7 +77,7 @@ class Settings {
 			'details_mode'               => 'modal',
 			'enable_search'              => true,
 			'enable_filters'             => true,
-			'enable_load_more'           => true,
+			'enable_load_more'           => false,
 			'enable_single_pages'        => false,
 
 			// Udogodnienia.
@@ -211,7 +211,7 @@ class Settings {
 		$out['image_fit']   = self::pick( $input['image_fit'] ?? '', array( 'cover', 'contain' ), $defaults['image_fit'] );
 
 		$out['card_min_height'] = self::clamp_int( $input['card_min_height'] ?? 0, 0, 1200, 0 );
-		$out['border_radius']   = self::clamp_int( $input['border_radius'] ?? 4, 0, 40, 4 );
+		$out['border_radius']   = self::clamp_int( $input['border_radius'] ?? 2, 0, 40, 2 );
 		$out['grid_gap']        = self::clamp_int( $input['grid_gap'] ?? 20, 0, 80, 20 );
 		$out['card_shadow']     = ! empty( $input['card_shadow'] );
 

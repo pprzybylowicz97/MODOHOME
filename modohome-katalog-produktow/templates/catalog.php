@@ -86,6 +86,7 @@ if ( $limit > 0 && $total >= $limit ) {
 	<?php endif; ?>
 
 	<?php if ( $show_category_filter && ! empty( $terms ) ) : ?>
+		<div class="modohome-catalog-filterbar">
 		<div class="modohome-catalog-filters" role="group" aria-label="<?php esc_attr_e( 'Filtruj po kategorii', 'modohome-katalog-produktow' ); ?>">
 			<button type="button" class="modohome-catalog-filter is-active" data-modohome-filter="" aria-pressed="true">
 				<?php esc_html_e( 'Wszystkie', 'modohome-katalog-produktow' ); ?>
@@ -111,6 +112,20 @@ if ( $limit > 0 && $total >= $limit ) {
 					<?php endif; ?>
 				</button>
 			<?php endforeach; ?>
+			</div>
+
+			<p class="modohome-catalog-count" data-modohome-count>
+				<?php
+				// JavaScript podmienia całą treść po filtrowaniu, więc trzymamy tu czysty tekst.
+				echo esc_html(
+					sprintf(
+						/* translators: %s: liczba produktów. */
+						_n( '%s produkt', '%s produktów', $total, 'modohome-katalog-produktow' ),
+						number_format_i18n( $total )
+					)
+				);
+				?>
+			</p>
 		</div>
 	<?php endif; ?>
 
@@ -132,14 +147,20 @@ if ( $limit > 0 && $total >= $limit ) {
 		<?php esc_html_e( 'Nie znaleziono produktów.', 'modohome-katalog-produktow' ); ?>
 	</p>
 
-	<div class="modohome-catalog-more">
-		<button
-			type="button"
-			class="modohome-catalog-button modohome-catalog-button--more"
-			data-modohome-load-more
-			<?php echo $modohome_has_more ? '' : 'hidden'; ?>
-		>
-			<?php esc_html_e( 'Pokaż więcej', 'modohome-katalog-produktow' ); ?>
-		</button>
-	</div>
+	<?php if ( $use_load_more ) : ?>
+		<div class="modohome-catalog-more">
+			<button
+				type="button"
+				class="modohome-catalog-button modohome-catalog-button--more"
+				data-modohome-load-more
+				<?php echo $modohome_has_more ? '' : 'hidden'; ?>
+			>
+				<?php esc_html_e( 'Pokaż więcej', 'modohome-katalog-produktow' ); ?>
+			</button>
+		</div>
+	<?php else : ?>
+		<nav class="modohome-catalog-pagination" data-modohome-pagination aria-label="<?php esc_attr_e( 'Strony katalogu', 'modohome-katalog-produktow' ); ?>">
+			<?php echo Catalog::render_pagination( 1, $max_pages ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		</nav>
+	<?php endif; ?>
 </div>

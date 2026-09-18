@@ -84,9 +84,18 @@ class Ajax {
 		if ( $limit > 0 && ( ( $page - 1 ) * $per_page ) >= $limit ) {
 			wp_send_json_success(
 				array(
-					'html'    => '',
-					'hasMore' => false,
-					'total'   => $limit,
+					'html'       => '',
+					'hasMore'    => false,
+					'total'      => $limit,
+					'totalText'  => number_format_i18n( $limit ),
+					'countLabel' => sprintf(
+						/* translators: %s: liczba produktów. */
+						_n( '%s produkt', '%s produktów', $limit, 'modohome-katalog-produktow' ),
+						number_format_i18n( $limit )
+					),
+					'page'       => $page,
+					'pages'      => (int) ceil( $limit / max( 1, $per_page ) ),
+					'pagination' => '',
 				)
 			);
 		}
@@ -115,13 +124,22 @@ class Ajax {
 		$capped   = ( $limit > 0 ) ? min( $total, $limit ) : $total;
 		$shown    = ( $page - 1 ) * $per_page + count( $query->posts );
 		$has_more = $shown < $capped;
+		$pages    = (int) ceil( $capped / max( 1, $per_page ) );
 
 		wp_send_json_success(
 			array(
-				'html'    => $html,
-				'hasMore' => $has_more,
-				'total'   => $capped,
-				'page'    => $page,
+				'html'       => $html,
+				'hasMore'    => $has_more,
+				'total'      => $capped,
+				'totalText'  => number_format_i18n( $capped ),
+				'countLabel' => sprintf(
+					/* translators: %s: liczba produktów. */
+					_n( '%s produkt', '%s produktów', $capped, 'modohome-katalog-produktow' ),
+					number_format_i18n( $capped )
+				),
+				'page'       => $page,
+				'pages'      => $pages,
+				'pagination' => Catalog::render_pagination( $page, $pages ),
 			)
 		);
 	}

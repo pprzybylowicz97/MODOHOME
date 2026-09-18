@@ -273,6 +273,8 @@
 		var empty = root.querySelector( '[data-modohome-empty]' );
 		var status = root.querySelector( '[data-modohome-status]' );
 		var loadMore = root.querySelector( '[data-modohome-load-more]' );
+		var pagination = root.querySelector( '[data-modohome-pagination]' );
+		var countLabel = root.querySelector( '[data-modohome-count]' );
 		var searchInput = root.querySelector( '[data-modohome-search]' );
 		var sortSelect = root.querySelector( '[data-modohome-sort]' );
 		var filterButtons = Array.prototype.slice.call( root.querySelectorAll( '[data-modohome-filter]' ) );
@@ -354,6 +356,14 @@
 				if ( loadMore ) {
 					loadMore.hidden = ! response.data.hasMore || config.loadMore === false;
 				}
+
+				if ( countLabel && response.data.countLabel ) {
+					countLabel.textContent = response.data.countLabel;
+				}
+
+				if ( pagination ) {
+					pagination.innerHTML = response.data.pagination || '';
+				}
 			} ).catch( function () {
 				state.busy = false;
 				grid.classList.remove( 'is-loading' );
@@ -426,6 +436,32 @@
 				reload();
 			} );
 		} );
+
+		if ( pagination ) {
+			pagination.addEventListener( 'click', function ( event ) {
+				var button = event.target.closest( '[data-modohome-page]' );
+
+				if ( ! button || ! pagination.contains( button ) ) {
+					return;
+				}
+
+				event.preventDefault();
+
+				var target = parseInt( button.getAttribute( 'data-modohome-page' ), 10 );
+
+				if ( ! target || target === state.page ) {
+					return;
+				}
+
+				state.page = target;
+				load( false );
+
+				// Po zmianie strony wracamy na górę katalogu.
+				if ( typeof root.scrollIntoView === 'function' ) {
+					root.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+				}
+			} );
+		}
 
 		// Delegacja: karty doładowane przez AJAX też otwierają okno modalne.
 		grid.addEventListener( 'click', function ( event ) {

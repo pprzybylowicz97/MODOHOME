@@ -74,6 +74,14 @@ class Catalog {
 			)
 		);
 
+		$total = (int) $query->found_posts;
+
+		if ( $limit > 0 ) {
+			$total = min( $total, $limit );
+		}
+
+		$pages = (int) ceil( $total / max( 1, $per_page ) );
+
 		$heading = '' !== (string) $atts['heading']
 			? (string) $atts['heading']
 			: (string) Settings::get( 'catalog_heading', '' );
@@ -102,9 +110,10 @@ class Catalog {
 				'orderby'              => $orderby,
 				'terms'                => $show_category_filter ? Taxonomy::get_ordered_terms( true ) : array(),
 				'config'               => $config,
-				'total'                => (int) $query->found_posts,
-				'max_pages'            => (int) $query->max_num_pages,
+				'total'                => $total,
+				'max_pages'            => $pages,
 				'limit'                => $limit,
+				'use_load_more'        => Settings::bool( 'enable_load_more' ),
 			)
 		);
 	}
@@ -137,5 +146,94 @@ class Catalog {
 				'post'    => $post,
 			)
 		);
+	}
+
+	/**
+	 * Buduje listę numerów stron z wielokropkami.
+	 *
+	 * Dla 8 stron i strony 1 zwraca: 1, 2, 3, …, 8.
+	 *
+	 * @param int $current Bieżąca strona.
+	 * @param int $total   Liczba stron.
+	 *
+	 * @return array<int,int|string>
+	 */
+	public static function pagination_items( int $current, int $total ): array {
+		if ( $total < 2 ) {
+			return array();
+		}
+
+		$current = max( 1, min( $total, $current ) );
+		$start   = max( 1, $current - 1 );
+		$end     = min( $total, $current + 1 );
+
+		// W oknie pokazujemy co najmniej trzy strony, o ile jest ich tyle.
+		while ( ( $end - $start ) < 2 && ( $start > 1 || $end < $total ) ) {
+			if ( $start > 1 ) {
+				--$start;
+			} elseif ( $end < $total ) {
+				++$end;
+			}
+		}
+
+		$items = array();
+
+		if ( $start > 1 ) {
+			$items[] = 1;
+
+			if ( $start > 2 ) {
+				$items[] = '…';
+			}
+		}
+
+		for ( $page = $start; $page <= $end; $page++ ) {
+			$items[] = $page;
+		}
+
+		if ( $end < $total ) {
+			if ( $end < $total - 1 ) {
+				$items[] = '…';
+			}
+
+			$items[] = $total;
+		}
+
+		return $items;
+	}
+
+	/**
+	 * Renderuje numerowaną paginację katalogu.
+	 *
+	 * @param int $current Bieżąca strona.
+	 * @param int $total   Liczba stron.
+	 */
+	public static function render_pagination( int $current, int $total ): string {
+		$items = self::pagination_items( $current, $total );
+
+		if ( empty( $items ) ) {
+			return '';
+		}
+
+		$current = max( 1, min( $total, $current ) );
+		$html    = '';
+
+		foreach ( $items as $item ) {
+			if ( ! is_int( $item ) ) {
+				$html .= '<span class="modohome-catalog-page modohome-catalog-page--gap" aria-hidden="true">' . esc_html( (string) $item ) . '</span>';
+				continue;
+			}
+
+			$is_current = ( $item === $current );
+
+			$html .= sprintf(
+				'<button type="button" class="modohome-catalog-page%1$s" data-modohome-page="%2$d"%3$s>%4$s</button>',
+				$is_current ? ' is-current' : '',
+				$item,
+				$is_current ? ' aria-current="page"' : '',
+				esc_html( (string) $item )
+			);
+		}
+
+		return $html;
 	}
 }

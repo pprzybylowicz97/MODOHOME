@@ -4,7 +4,7 @@ Prosty katalog produktów sklepu stacjonarnego MODOhome dla WordPressa. Służy 
 do prezentacji produktów, zdjęć i cen — **bez WooCommerce, bez koszyka, bez płatności
 i bez stanów magazynowych**.
 
-- **Wersja:** 1.1.0
+- **Wersja:** 1.2.0
 - **Wymaga WordPressa:** 6.1 lub nowszego
 - **Wymaga PHP:** 8.1 lub nowszego
 - **Licencja:** GPL-2.0-or-later
@@ -17,8 +17,8 @@ i bez stanów magazynowych**.
   **Kategorie produktów** (`modohome_product_category`).
 - Formularz frontendowy do dodawania produktów **z telefonu** — jedno zdjęcie z aparatu,
   nazwa, cena, gotowe.
-- Nowoczesny katalog na stronie: filtry, wyszukiwarka, sortowanie, „Pokaż więcej”
-  i okno modalne ze szczegółami.
+- Nowoczesny katalog na stronie: filtry kategorii, wyszukiwarka, sortowanie, numerowane
+  strony i okno modalne ze szczegółami.
 - Osobna rola **Pracownik katalogu** z własnymi uprawnieniami — pracownik widzi
   i edytuje wyłącznie swoje produkty.
 - Panel ustawień: kolory, kolumny, proporcje zdjęć, elementy karty, waluta, limity zdjęć.
@@ -111,6 +111,39 @@ do kosza. Atrybut `limit` (domyślnie `20`) ustala liczbę pokazywanych produkt�
 
 ---
 
+## Wygląd katalogu
+
+Domyślny układ odpowiada makiecie MODOhome:
+
+- **Zdjęcia pionowe 3:4** — dopasowane do fotografii robionych telefonem na stojąco.
+- **Pasek filtrów** u góry: aktywna kategoria na czarnym tle wersalikami, pozostałe
+  białe z cienką ramką. Po prawej stronie licznik znalezionych produktów.
+- **Cztery kolumny** na komputerze, dwie na tablecie i telefonie.
+- **Numerowane strony** (1, 2, 3, …, 8) pod katalogiem — przełączanie bez przeładowania
+  strony. Alternatywę „Pokaż więcej” włączysz w ustawieniach.
+- **Karta**: kategoria drobnymi wersalikami, nazwa pogrubiona, cena w kolorze akcentu.
+- **Ciepłe, jasne tło** katalogu i białe karty.
+
+### Kolory etykiet
+
+Każda etykieta ma własny kolor, dobrany do znaczenia:
+
+| Etykieta | Kolor |
+|---|---|
+| Nowość, Promocja | czerwony (kolor akcentu) |
+| Ostatnia sztuka | żółty z czarnym tekstem |
+| Bestseller, Dostępny od ręki, Ekspozycja | czarny |
+| Dodano dzisiaj | czarny |
+
+Kolor akcentu, tła, kart i tekstu zmienisz w ustawieniach. Żółty dla „Ostatniej sztuki”
+nadpiszesz własnym CSS-em:
+
+```css
+.modohome-catalog-badge--last { background: #ff9900; }
+```
+
+---
+
 ## Dane produktu
 
 | Pole | Wymagane | Gdzie |
@@ -122,7 +155,7 @@ do kosza. Atrybut `limit` (domyślnie `20`) ustala liczbę pokazywanych produkt�
 | Cena poprzednia | nie | Panel „Dane produktu” |
 | Krótki opis | nie | Panel „Dane produktu” |
 | Kategoria | tak | Panel „Kategorie produktów” |
-| Etykieta | nie | Nowość, Promocja, Ostatnia sztuka, Bestseller, Dostępny od ręki |
+| Etykieta | nie | Nowość, Promocja, Ostatnia sztuka, Bestseller, Dostępny od ręki, Ekspozycja |
 | Dostępność | tak | Dostępny, Zarezerwowany, Sprzedany, Ukryty |
 | Data dodania | automatycznie | Data wpisu |
 | Autor | automatycznie | Autor wpisu |
@@ -188,8 +221,13 @@ zrobisz przez **Edycja grupowa** WordPressa.
   data dodania, „Zobacz szczegóły”, oznaczenie „Dodano dzisiaj”.
 - **Działanie katalogu** — produkty na stronę, domyślne sortowanie, produkty sprzedane,
   tryb szczegółów (modal / podstrona / brak), podstrony produktów, wyszukiwarka, filtry,
-  „Pokaż więcej”, licznik produktów, publikacja bez zatwierdzania, kategorie dla pracowników,
-  maksymalny rozmiar i wymiar zdjęcia, automatyczne ukrycie po X dniach, waluta i jej pozycja.
+  sposób stronicowania, licznik produktów, publikacja bez zatwierdzania, kategorie dla
+  pracowników, automatyczne ukrycie po X dniach, waluta i jej pozycja.
+- **Optymalizacja zdjęć** — patrz sekcja poniżej.
+
+Ustawienie **„Przycisk «Pokaż więcej»”** decyduje o stronicowaniu: wyłączone (domyślnie)
+daje numerowane strony jak w makiecie, włączone — przycisk doładowujący kolejne produkty.
+Oba tryby działają bez przeładowania strony.
 - **Dane i zaawansowane** — log aktywności, usuwanie danych przy deinstalacji, własny CSS.
 
 Przycisk **Przywróć ustawienia domyślne** kasuje wszystkie zmiany (z potwierdzeniem).
@@ -390,6 +428,11 @@ Limit i tak nie przekroczy limitu serwera (`upload_max_filesize`).
 **Produkty pracowników nie pojawiają się w katalogu.** Sprawdź ustawienie „Publikacja
 produktów pracowników” — przy wyłączonym czekają na zatwierdzenie w **Produkty → Wszystkie**
 ze statusem „Oczekujące”.
+
+**Katalog wygląda inaczej niż na makiecie po aktualizacji.** Nowe wartości domyślne
+działają tylko na świeżych instalacjach — wcześniejsze ustawienia zostają nietknięte.
+Kliknij **Przywróć ustawienia domyślne** albo ustaw ręcznie: proporcje 3:4, tło `#f4f2ee`,
+zaokrąglenie 2 px, „Pokaż więcej” wyłączone, „Zobacz szczegóły” wyłączone.
 
 **Zdjęcia nie zapisują się w WebP.** Sprawdź wiersz „Obsługa WebP na serwerze”
 w ustawieniach. Jeśli pokazuje „Niedostępna”, hosting musi włączyć GD z obsługą WebP

@@ -180,7 +180,7 @@ class Settings_Page {
 					$this->checkbox_row( $name, 'enable_single_pages', __( 'Podstrony produktów', 'modohome-katalog-produktow' ), __( 'Włącz publiczne podstrony pojedynczych produktów', 'modohome-katalog-produktow' ), (bool) $s['enable_single_pages'] );
 					$this->checkbox_row( $name, 'enable_search', __( 'Wyszukiwarka', 'modohome-katalog-produktow' ), __( 'Pokazuj pole wyszukiwania w katalogu', 'modohome-katalog-produktow' ), (bool) $s['enable_search'] );
 					$this->checkbox_row( $name, 'enable_filters', __( 'Filtry', 'modohome-katalog-produktow' ), __( 'Pokazuj filtry kategorii i sortowanie', 'modohome-katalog-produktow' ), (bool) $s['enable_filters'] );
-					$this->checkbox_row( $name, 'enable_load_more', __( 'Przycisk „Pokaż więcej”', 'modohome-katalog-produktow' ), __( 'Doładowuj produkty przyciskiem zamiast przeładowania strony', 'modohome-katalog-produktow' ), (bool) $s['enable_load_more'] );
+					$this->checkbox_row( $name, 'enable_load_more', __( 'Przycisk „Pokaż więcej”', 'modohome-katalog-produktow' ), __( 'Doładowuj produkty przyciskiem. Wyłączone = numerowane strony (1, 2, 3…).', 'modohome-katalog-produktow' ), (bool) $s['enable_load_more'] );
 					$this->checkbox_row( $name, 'show_category_counts', __( 'Licznik produktów', 'modohome-katalog-produktow' ), __( 'Pokazuj liczbę produktów przy kategoriach', 'modohome-katalog-produktow' ), (bool) $s['show_category_counts'] );
 
 					$this->checkbox_row( $name, 'worker_autopublish', __( 'Publikacja produktów pracowników', 'modohome-katalog-produktow' ), __( 'Publikuj od razu, bez zatwierdzania', 'modohome-katalog-produktow' ), (bool) $s['worker_autopublish'] );

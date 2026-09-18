@@ -83,6 +83,7 @@ class Product {
 			'last'       => __( 'Ostatnia sztuka', 'modohome-katalog-produktow' ),
 			'bestseller' => __( 'Bestseller', 'modohome-katalog-produktow' ),
 			'instock'    => __( 'Dostępny od ręki', 'modohome-katalog-produktow' ),
+			'exposition' => __( 'Ekspozycja', 'modohome-katalog-produktow' ),
 		);
 	}
 
