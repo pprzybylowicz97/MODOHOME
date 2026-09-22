@@ -4,7 +4,7 @@ Prosty katalog produktów sklepu stacjonarnego MODOhome dla WordPressa. Służy 
 do prezentacji produktów, zdjęć i cen — **bez WooCommerce, bez koszyka, bez płatności
 i bez stanów magazynowych**.
 
-- **Wersja:** 1.2.0
+- **Wersja:** 1.2.1
 - **Wymaga WordPressa:** 6.1 lub nowszego
 - **Wymaga PHP:** 8.1 lub nowszego
 - **Licencja:** GPL-2.0-or-later
@@ -428,6 +428,11 @@ Limit i tak nie przekroczy limitu serwera (`upload_max_filesize`).
 **Produkty pracowników nie pojawiają się w katalogu.** Sprawdź ustawienie „Publikacja
 produktów pracowników” — przy wyłączonym czekają na zatwierdzenie w **Produkty → Wszystkie**
 ze statusem „Oczekujące”.
+
+**Ustawienia wyglądu nie działają (dotyczy wersji do 1.2.0 włącznie).**
+Zmienne CSS były deklarowane na kontenerze katalogu zamiast na `:root`, przez co
+przesłaniały wartości z panelu ustawień — nie działały kolumny na telefonie i tablecie,
+kolory, odstępy ani proporcje zdjęć. Naprawione w 1.2.1; zaktualizuj wtyczkę.
 
 **Katalog wygląda inaczej niż na makiecie po aktualizacji.** Nowe wartości domyślne
 działają tylko na świeżych instalacjach — wcześniejsze ustawienia zostają nietknięte.

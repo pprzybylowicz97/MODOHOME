@@ -3,13 +3,16 @@
  * Wszystkie klasy mają prefiks modohome-catalog-, żeby nie kolidować z motywem.
  */
 
-.modohome-catalog {
+/* Zmienne muszą być zadeklarowane na :root, a nie na .modohome-catalog.
+ * Własna właściwość ustawiona bezpośrednio na elemencie przesłania wartość
+ * dziedziczoną z :root — a to właśnie tam panel ustawień wstawia swoje wartości. */
+:root {
 	--modohome-catalog-primary: #ef1616;
 	--modohome-catalog-text: #111111;
 	--modohome-catalog-bg: #ffffff;
 	--modohome-catalog-card: #ffffff;
 	--modohome-catalog-badge: #ef1616;
-	--modohome-catalog-radius: 4px;
+	--modohome-catalog-radius: 2px;
 	--modohome-catalog-gap: 20px;
 	--modohome-catalog-ratio: 3 / 4;
 	--modohome-catalog-fit: cover;
@@ -23,7 +26,9 @@
 	--modohome-catalog-placeholder: rgba(17, 17, 17, .07);
 	--modohome-catalog-warning: #f5c518;
 	--modohome-catalog-ink: #111111;
+}
 
+.modohome-catalog {
 	box-sizing: border-box;
 	color: var(--modohome-catalog-text);
 	background: var(--modohome-catalog-bg);
