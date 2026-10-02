@@ -4,7 +4,7 @@ Prosty katalog produktów sklepu stacjonarnego MODOhome dla WordPressa. Służy 
 do prezentacji produktów, zdjęć i cen — **bez WooCommerce, bez koszyka, bez płatności
 i bez stanów magazynowych**.
 
-- **Wersja:** 1.3.0
+- **Wersja:** 1.3.1
 - **Wymaga WordPressa:** 6.1 lub nowszego
 - **Wymaga PHP:** 8.1 lub nowszego
 - **Licencja:** GPL-2.0-or-later
@@ -450,6 +450,18 @@ Limit i tak nie przekroczy limitu serwera (`upload_max_filesize`).
 **Produkty pracowników nie pojawiają się w katalogu.** Sprawdź ustawienie „Publikacja
 produktów pracowników” — przy wyłączonym czekają na zatwierdzenie w **Produkty → Wszystkie**
 ze statusem „Oczekujące”.
+
+**Nazwy produktów są ucinane albo kafelki wychodzą poza siatkę (naprawione w 1.3.1).**
+Kafelkom brakowało `min-width: 0`, więc długa nazwa rozpychała kartę zamiast się zawinąć.
+Od 1.3.1 nazwa zawsze się zawija, także gdy motyw narzuca nagłówkom wersaliki lub
+większą czcionkę — reguły wtyczki mają wyższą specyficzność niż typowe `.entry-content h3`.
+
+Skutek uboczny: wtyczka wymusza teraz normalną wielkość liter w nazwach produktów,
+zgodnie z projektem katalogu. Jeśli wolisz wersaliki, dodaj we własnym CSS:
+
+```css
+.modohome-catalog .modohome-catalog-card-title { text-transform: uppercase; }
+```
 
 **Zdjęcia są przycięte w katalogu.** Ustaw **Proporcje zdjęć** na „Dopasuj do zdjęcia —
 bez przycinania”. Stały kadr zawsze przytnie zdjęcie o innych proporcjach; alternatywa

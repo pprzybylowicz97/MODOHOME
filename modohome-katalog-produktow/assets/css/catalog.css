@@ -30,6 +30,7 @@
 
 .modohome-catalog {
 	box-sizing: border-box;
+	max-width: 100%;
 	color: var(--modohome-catalog-text);
 	background: var(--modohome-catalog-bg);
 }
@@ -178,6 +179,7 @@
 
 .modohome-catalog-grid {
 	display: grid;
+	max-width: 100%;
 	grid-template-columns: repeat(var(--modohome-catalog-cols-mobile), minmax(0, 1fr));
 	gap: var(--modohome-catalog-gap);
 	margin: 0;
@@ -206,6 +208,10 @@
 
 .modohome-catalog-card {
 	display: flex;
+	/* Bez min-width: 0 element flex nie zejdzie poniżej szerokości swojej treści,
+	   więc długa nazwa produktu rozpycha kartę poza kolumnę siatki. */
+	min-width: 0;
+	max-width: 100%;
 	min-height: var(--modohome-catalog-card-height);
 	background: var(--modohome-catalog-card);
 	border: 1px solid var(--modohome-catalog-line);
@@ -223,6 +229,8 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	min-width: 0;
+	max-width: 100%;
 	margin: 0;
 	padding: 0;
 	color: inherit;
@@ -370,6 +378,7 @@
 	display: flex;
 	flex: 1;
 	flex-direction: column;
+	min-width: 0;
 	gap: 8px;
 	padding: 18px 20px 20px;
 	background: var(--modohome-catalog-card);
@@ -873,4 +882,86 @@
 		min-width: 44px;
 		min-height: 44px;
 	}
+}
+
+/* ---------------------------------------------------------------------------
+ * Odporność na style motywu
+ *
+ * Motywy WordPressa często narzucają nagłówkom wersaliki, dużą czcionkę albo
+ * brak zawijania, a przyciskom white-space: nowrap. Reguły poniżej mają dwie
+ * klasy w selektorze, więc wygrywają z typowym „.entry-content h3” bez
+ * sięgania po !important. Dzięki temu nazwa produktu zawsze się zawija
+ * i nigdy nie rozpycha kafelka.
+ * ------------------------------------------------------------------------ */
+
+.modohome-catalog .modohome-catalog-card-link {
+	white-space: normal;
+	text-transform: none;
+	letter-spacing: normal;
+}
+
+.modohome-catalog .modohome-catalog-card-title {
+	min-width: 0;
+	max-width: 100%;
+	font-size: 1.0625rem;
+	font-weight: 700;
+	line-height: 1.3;
+	text-transform: none;
+	letter-spacing: normal;
+	white-space: normal;
+	/* „anywhere” pozwala złamać też jeden bardzo długi wyraz i — w odróżnieniu
+	   od break-word — zmniejsza minimalną szerokość elementu, więc karta
+	   faktycznie może się zwęzić. */
+	overflow-wrap: anywhere;
+	hyphens: auto;
+}
+
+.modohome-catalog .modohome-catalog-card-category,
+.modohome-catalog .modohome-catalog-card-description {
+	max-width: 100%;
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+
+.modohome-catalog .modohome-catalog-card-prices {
+	min-width: 0;
+	max-width: 100%;
+}
+
+.modohome-catalog .modohome-catalog-price,
+.modohome-catalog .modohome-catalog-price-old {
+	overflow-wrap: anywhere;
+}
+
+.modohome-catalog .modohome-catalog-badge,
+.modohome-catalog .modohome-catalog-status-tag {
+	max-width: calc(100% - 20px);
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+
+.modohome-catalog .modohome-catalog-filter {
+	white-space: nowrap;
+	text-transform: none;
+}
+
+.modohome-catalog .modohome-catalog-filter.is-active {
+	text-transform: uppercase;
+}
+
+.modohome-catalog .modohome-catalog-page {
+	white-space: nowrap;
+	text-transform: none;
+}
+
+.modohome-catalog-modal .modohome-catalog-modal-title {
+	max-width: 100%;
+	text-transform: none;
+	letter-spacing: normal;
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+
+.modohome-catalog-modal .modohome-catalog-modal-details {
+	min-width: 0;
 }

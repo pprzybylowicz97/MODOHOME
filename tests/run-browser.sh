@@ -17,6 +17,7 @@ php build-inline-css.php '{"columns_mobile":1}'                        inline.cs
 mv css-*.css inline.css "$WORK/"
 
 python3 make-pages.py "$WORK" ../modohome-katalog-produktow
+python3 make-theme-page.py "$WORK" ../modohome-katalog-produktow
 
 echo "== Liczba kolumn i ustawienia wyglądu =="
 node test-layout.mjs "$WORK" || fail=1
@@ -24,6 +25,8 @@ echo "== Kadrowanie zdjęć =="
 node test-fit.mjs "$WORK" || fail=1
 echo "== Okno modalne =="
 node test-modal.mjs "$WORK" || fail=1
+echo "== Odporność na style motywu =="
+node test-theme.mjs "$WORK" || fail=1
 
 [ $fail -eq 0 ] && echo "WSZYSTKO PRZESZŁO" || echo "SĄ NIEPOWODZENIA"
 exit $fail

@@ -36,6 +36,7 @@ Dodatkowe wymagania: Python 3 z Pillow, Node 18+ i Playwright z Chromium.
 | `test-layout.mjs` | Liczba kolumn na telefonie, tablecie i komputerze; kolory, odstępy i proporcje z ustawień. |
 | `test-fit.mjs` | Mierzy, ile procent zdjęcia widać i ile kafelka to puste tło, w trzech trybach kadrowania. |
 | `test-modal.mjs` | Okno modalne pokazuje pionowy zrzut ekranu w całości i mieści się w ekranie. |
+| `test-theme.mjs` | Motyw nadpisujący style wtyczki — nazwy produktów nie mogą być ucięte ani rozpychać kafelków. |
 | `make-fixtures.py` | Obrazki testowe: 450×975, 900×675, 700×700. |
 | `make-pages.py` | Buduje strony testowe z prawdziwego CSS wtyczki. |
 
@@ -46,3 +47,6 @@ Te testy powstały po dwóch realnych błędach:
   telefonie, kolory ani odstępy. Pilnuje tego też statycznie `check-css-vars.php`.
 - **1.3.0** — stały kadr przycinał zrzuty ekranu do 62% powierzchni, a `contain`
   zostawiał 39–44% pustego tła. Stąd tryb „Dopasuj do zdjęcia”.
+- **1.3.1** — brak `min-width: 0` na kafelku i brak zawijania powodowały, że długa
+  nazwa produktu rozpychała kartę i była ucinana. Widoczne tym mocniej, że motyw
+  narzucał nagłówkom wersaliki i większą czcionkę.
