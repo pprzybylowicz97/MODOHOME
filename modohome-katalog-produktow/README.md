@@ -4,7 +4,7 @@ Prosty katalog produktów sklepu stacjonarnego MODOhome dla WordPressa. Służy 
 do prezentacji produktów, zdjęć i cen — **bez WooCommerce, bez koszyka, bez płatności
 i bez stanów magazynowych**.
 
-- **Wersja:** 1.2.1
+- **Wersja:** 1.3.0
 - **Wymaga WordPressa:** 6.1 lub nowszego
 - **Wymaga PHP:** 8.1 lub nowszego
 - **Licencja:** GPL-2.0-or-later
@@ -116,6 +116,7 @@ do kosza. Atrybut `limit` (domyślnie `20`) ustala liczbę pokazywanych produkt�
 Domyślny układ odpowiada makiecie MODOhome:
 
 - **Zdjęcia pionowe 3:4** — dopasowane do fotografii robionych telefonem na stojąco.
+  Przy zdjęciach o bardzo różnych proporcjach wybierz **Dopasuj do zdjęcia** (patrz niżej).
 - **Pasek filtrów** u góry: aktywna kategoria na czarnym tle wersalikami, pozostałe
   białe z cienką ramką. Po prawej stronie licznik znalezionych produktów.
 - **Cztery kolumny** na komputerze, dwie na tablecie i telefonie.
@@ -123,6 +124,27 @@ Domyślny układ odpowiada makiecie MODOhome:
   strony. Alternatywę „Pokaż więcej” włączysz w ustawieniach.
 - **Karta**: kategoria drobnymi wersalikami, nazwa pogrubiona, cena w kolorze akcentu.
 - **Ciepłe, jasne tło** katalogu i białe karty.
+
+### Kadrowanie zdjęć
+
+W ustawieniach wyglądu pole **Proporcje zdjęć** ma trzy rodzaje zachowań:
+
+| Ustawienie | Co robi | Kiedy użyć |
+|---|---|---|
+| **Dopasuj do zdjęcia** | Kafelek przyjmuje proporcje konkretnej fotografii. Nic nie jest przycinane, nie ma pustego tła. Karty w rzędzie mają różną wysokość. | Zdjęcia o mieszanych proporcjach — zrzuty ekranu obok zdjęć z aparatu. |
+| Stała proporcja + **Wypełnij kadr** | Równa siatka, ale zdjęcie jest przycinane do kadru. | Zdjęcia robione jednakowo, np. wszystkie pionowe z tego samego ustawienia. |
+| Stała proporcja + **Zmieść całe zdjęcie** | Równa siatka, całe zdjęcie widoczne, ale wokół zostaje puste tło. | Gdy zależy Ci na równej siatce i nie przeszkadzają puste pasy. |
+
+Zmierzone na zrzucie ekranu telefonu (450×975) w kafelku 3:4:
+
+| Tryb | Widać ze zdjęcia | Puste tło w kafelku |
+|---|---|---|
+| Wypełnij kadr | 62% | 0% |
+| Zmieść całe zdjęcie | 100% | 39% |
+| **Dopasuj do zdjęcia** | **100%** | **0%** |
+
+Okno modalne zawsze pokazuje całe zdjęcie w jego naturalnych proporcjach, tak duże,
+jak zmieści się na ekranie — niezależnie od ustawienia kafelków.
 
 ### Kolory etykiet
 
@@ -428,6 +450,10 @@ Limit i tak nie przekroczy limitu serwera (`upload_max_filesize`).
 **Produkty pracowników nie pojawiają się w katalogu.** Sprawdź ustawienie „Publikacja
 produktów pracowników” — przy wyłączonym czekają na zatwierdzenie w **Produkty → Wszystkie**
 ze statusem „Oczekujące”.
+
+**Zdjęcia są przycięte w katalogu.** Ustaw **Proporcje zdjęć** na „Dopasuj do zdjęcia —
+bez przycinania”. Stały kadr zawsze przytnie zdjęcie o innych proporcjach; alternatywa
+„Zmieść całe zdjęcie” pokaże całość, ale zostawi puste tło wokół.
 
 **Ustawienia wyglądu nie działają (dotyczy wersji do 1.2.0 włącznie).**
 Zmienne CSS były deklarowane na kontenerze katalogu zamiast na `:root`, przez co

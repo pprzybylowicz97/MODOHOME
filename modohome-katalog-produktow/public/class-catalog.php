@@ -100,6 +100,7 @@ class Catalog {
 			'catalog',
 			array(
 				'instance_id'          => 'modohome-catalog-' . self::$instance,
+				'media_auto'           => 'auto' === (string) Settings::get( 'image_ratio', '3:4' ),
 				'query'                => $query,
 				'columns'              => $columns,
 				'heading'              => $heading,

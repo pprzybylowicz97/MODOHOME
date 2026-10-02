@@ -23,16 +23,26 @@ Wymagania: PHP 8.1+ i Node 18+.
 | `test-csv.php` | Sprawdza plik CSV logiką importera (wymaga `../produkty-modohome.csv`). |
 | `build-inline-css.php` | Generuje CSS z ustawień — wejście do testu układu w przeglądarce. |
 
-## Test układu w przeglądarce
-
-`check-css-vars.php` pilnuje statycznie tego, co w 1.2.1 okazało się realnym błędem:
-zmienne zadeklarowane na `.modohome-catalog` przesłaniały wartości wstrzykiwane
-z panelu ustawień na `:root`, przez co liczba kolumn na telefonie, kolory i odstępy
-nie działały.
-
-Pełne sprawdzenie układu wymaga przeglądarki:
+## Testy układu w przeglądarce
 
 ```bash
-php build-inline-css.php          # zapisuje inline.css z ustawień
-# następnie strona testowa + Playwright, patrz historia commita 1.2.1
+./run-browser.sh
 ```
+
+Dodatkowe wymagania: Python 3 z Pillow, Node 18+ i Playwright z Chromium.
+
+| Plik | Zakres |
+|---|---|
+| `test-layout.mjs` | Liczba kolumn na telefonie, tablecie i komputerze; kolory, odstępy i proporcje z ustawień. |
+| `test-fit.mjs` | Mierzy, ile procent zdjęcia widać i ile kafelka to puste tło, w trzech trybach kadrowania. |
+| `test-modal.mjs` | Okno modalne pokazuje pionowy zrzut ekranu w całości i mieści się w ekranie. |
+| `make-fixtures.py` | Obrazki testowe: 450×975, 900×675, 700×700. |
+| `make-pages.py` | Buduje strony testowe z prawdziwego CSS wtyczki. |
+
+Te testy powstały po dwóch realnych błędach:
+
+- **1.2.1** — zmienne deklarowane na `.modohome-catalog` przesłaniały wartości
+  z panelu ustawień wstrzykiwane na `:root`, więc nie działała liczba kolumn na
+  telefonie, kolory ani odstępy. Pilnuje tego też statycznie `check-css-vars.php`.
+- **1.3.0** — stały kadr przycinał zrzuty ekranu do 62% powierzchni, a `contain`
+  zostawiał 39–44% pustego tła. Stąd tryb „Dopasuj do zdjęcia”.

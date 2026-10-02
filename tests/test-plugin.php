@@ -209,6 +209,12 @@ echo "== 8. Proporcje zdjęć na CSS ==\n";
 check( 'pionowe', Settings::ratio_to_css( '3:4' ), '3 / 4' );
 check( 'kwadrat', Settings::ratio_to_css( '1:1' ), '1 / 1' );
 check( 'nieprawidłowe → domyślne', Settings::ratio_to_css( 'xx' ), '3 / 4' );
+check( 'tryb bez przycinania', Settings::ratio_to_css( 'auto' ), 'auto' );
+
+$ratios = Settings::image_ratios();
+ok( 'opcja „Dopasuj do zdjęcia” dostępna', isset( $ratios['auto'] ) );
+ok( 'format zrzutu ekranu telefonu dostępny', isset( $ratios['9:16'] ) );
+check( 'tryb auto przechodzi przez sanityzację', Settings::sanitize( array( 'image_ratio' => 'auto' ) )['image_ratio'], 'auto' );
 
 echo "== 9. Normalizacja kategorii ==\n";
 

@@ -280,11 +280,13 @@ class Settings {
 	 */
 	public static function image_ratios(): array {
 		return array(
-			'1:1'  => '1:1 (kwadrat)',
-			'4:3'  => '4:3 (poziome)',
-			'3:4'  => '3:4 (pionowe)',
-			'16:9' => '16:9 (panorama)',
-			'2:3'  => '2:3 (wysokie)',
+			'auto' => __( 'Dopasuj do zdjęcia — bez przycinania', 'modohome-katalog-produktow' ),
+			'1:1'  => __( '1:1 (kwadrat)', 'modohome-katalog-produktow' ),
+			'4:3'  => __( '4:3 (poziome)', 'modohome-katalog-produktow' ),
+			'3:4'  => __( '3:4 (pionowe)', 'modohome-katalog-produktow' ),
+			'2:3'  => __( '2:3 (wysokie)', 'modohome-katalog-produktow' ),
+			'9:16' => __( '9:16 (zrzut ekranu telefonu)', 'modohome-katalog-produktow' ),
+			'16:9' => __( '16:9 (panorama)', 'modohome-katalog-produktow' ),
 		);
 	}
 
@@ -294,6 +296,10 @@ class Settings {
 	 * @param string $ratio Proporcja w formacie „3:4”.
 	 */
 	public static function ratio_to_css( string $ratio ): string {
+		if ( 'auto' === $ratio ) {
+			return 'auto';
+		}
+
 		$parts = explode( ':', $ratio );
 
 		if ( 2 !== count( $parts ) ) {

@@ -237,6 +237,7 @@ class Assets {
 			'--modohome-catalog-gap'        => $gap . 'px',
 			'--modohome-catalog-ratio'      => Settings::ratio_to_css( (string) Settings::get( 'image_ratio', '3:4' ) ),
 			'--modohome-catalog-fit'        => (string) Settings::get( 'image_fit', 'cover' ),
+			'--modohome-catalog-media-height' => 'auto' === Settings::get( 'image_ratio', '3:4' ) ? 'auto' : '100%',
 			'--modohome-catalog-cols-desktop' => (string) Settings::int( 'columns_desktop' ),
 			'--modohome-catalog-cols-tablet'  => (string) Settings::int( 'columns_tablet' ),
 			'--modohome-catalog-cols-mobile'  => (string) Settings::int( 'columns_mobile' ),

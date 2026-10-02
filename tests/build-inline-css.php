@@ -28,13 +28,24 @@ function wp_register_script( ...$a ) {}
 use MODOhome\Catalog\Assets;
 use MODOhome\Catalog\Settings;
 
-// Ustawienia takie, jakie wpisałby administrator: JEDNA kolumna na telefonie.
+// Ustawienia takie, jakie wpisałby administrator. Nadpisania można podać
+// jako JSON w pierwszym argumencie, np.: php build-inline-css.php '{"image_ratio":"auto"}'
 $settings = Settings::defaults();
 $settings['columns_mobile']  = 1;
 $settings['columns_tablet']  = 2;
 $settings['columns_desktop'] = 4;
 $settings['primary_color']   = '#00aa55';
 $settings['grid_gap']        = 33;
+
+if ( isset( $argv[1] ) ) {
+	$overrides = json_decode( (string) $argv[1], true );
+
+	if ( is_array( $overrides ) ) {
+		$settings = array_merge( $settings, $overrides );
+	}
+}
+
+$out_file = $argv[2] ?? 'inline.css';
 
 $GLOBALS['stub_options']['modohome_catalog_settings'] = $settings;
 Settings::flush();
@@ -43,6 +54,6 @@ $assets = new Assets();
 $method = new ReflectionMethod( Assets::class, 'build_inline_css' );
 $method->setAccessible( true );
 
-file_put_contents( __DIR__ . '/inline.css', $method->invoke( $assets ) );
+file_put_contents( __DIR__ . '/' . basename( $out_file ), $method->invoke( $assets ) );
 
-echo "zapisano inline.css\n";
+echo "zapisano " . basename( $out_file ) . "\n";

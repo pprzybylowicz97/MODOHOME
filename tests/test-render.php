@@ -183,6 +183,7 @@ $catalog = \MODOhome\Catalog\Plugin::render_template(
 		'max_pages'            => 8,
 		'limit'                => 0,
 		'use_load_more'        => false,
+		'media_auto'           => false,
 	)
 );
 
@@ -217,7 +218,7 @@ $catalog2 = \MODOhome\Catalog\Plugin::render_template(
 		'heading' => '', 'intro' => '', 'show_filters' => false, 'show_category_filter' => false,
 		'show_search' => false, 'orderby' => 'date', 'terms' => array(),
 		'config' => array( 'perPage' => 12, 'loadMore' => true ),
-		'total' => 94, 'max_pages' => 8, 'limit' => 0, 'use_load_more' => true,
+		'total' => 94, 'max_pages' => 8, 'limit' => 0, 'use_load_more' => true, 'media_auto' => false,
 	)
 );
 
@@ -226,6 +227,24 @@ assert_missing( 'brak numerowanej paginacji', $catalog2, 'data-modohome-paginati
 
 $GLOBALS['stub_options']['modohome_catalog_settings'] = Settings::defaults();
 Settings::flush();
+
+echo "== Tryb kadrowania na kontenerze katalogu ==\n";
+
+$common = array(
+	'instance_id' => 'c3', 'query' => $query, 'columns' => 4, 'heading' => '', 'intro' => '',
+	'show_filters' => false, 'show_category_filter' => false, 'show_search' => false,
+	'orderby' => 'date', 'terms' => array(), 'config' => array( 'perPage' => 12 ),
+	'total' => 1, 'max_pages' => 1, 'limit' => 0, 'use_load_more' => false,
+);
+
+$fixed = \MODOhome\Catalog\Plugin::render_template( 'catalog', $common + array( 'media_auto' => false ) );
+$auto  = \MODOhome\Catalog\Plugin::render_template( 'catalog', $common + array( 'media_auto' => true ) );
+
+assert_missing( 'stała proporcja: brak klasy trybu auto', $fixed, 'modohome-catalog--media-auto' );
+assert_contains( 'tryb auto: klasa na kontenerze', $auto, 'modohome-catalog--media-auto' );
+
+$bez_zmiennej = \MODOhome\Catalog\Plugin::render_template( 'catalog', $common );
+assert_contains( 'szablon działa bez zmiennej media_auto', $bez_zmiennej, 'modohome-catalog-grid' );
 
 echo "== Etykieta Ekspozycja na karcie ==\n";
 

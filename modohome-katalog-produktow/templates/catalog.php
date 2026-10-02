@@ -38,7 +38,7 @@ if ( $limit > 0 && $total >= $limit ) {
 }
 ?>
 <div
-	class="modohome-catalog"
+	class="modohome-catalog<?php echo ! empty( $media_auto ) ? ' modohome-catalog--media-auto' : ''; ?>"
 	id="<?php echo esc_attr( $instance_id ); ?>"
 	data-modohome-catalog
 	data-config="<?php echo esc_attr( (string) wp_json_encode( $config ) ); ?>"

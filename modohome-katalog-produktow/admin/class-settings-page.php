@@ -101,13 +101,23 @@ class Settings_Page {
 					$this->number_row( $name, 'columns_mobile', __( 'Kolumny — telefon', 'modohome-katalog-produktow' ), (int) $s['columns_mobile'], 1, 2 );
 
 					$this->select_row( $name, 'image_ratio', __( 'Proporcje zdjęć', 'modohome-katalog-produktow' ), Settings::image_ratios(), (string) $s['image_ratio'] );
+					?>
+					<tr>
+						<th scope="row"></th>
+						<td>
+							<p class="description">
+								<?php esc_html_e( 'Przy zdjęciach o różnych proporcjach — zrzuty ekranu obok zdjęć z aparatu — wybierz „Dopasuj do zdjęcia”. Nic nie zostanie przycięte, ale karty w rzędzie będą miały różną wysokość. Ustawienie poniżej działa tylko przy stałych proporcjach.', 'modohome-katalog-produktow' ); ?>
+							</p>
+						</td>
+					</tr>
+					<?php
 					$this->select_row(
 						$name,
 						'image_fit',
 						__( 'Sposób przycinania zdjęć', 'modohome-katalog-produktow' ),
 						array(
-							'cover'   => __( 'Wypełnij kadr (przycina)', 'modohome-katalog-produktow' ),
-							'contain' => __( 'Zmieść całe zdjęcie', 'modohome-katalog-produktow' ),
+							'cover'   => __( 'Wypełnij kadr — przycina zdjęcie', 'modohome-katalog-produktow' ),
+							'contain' => __( 'Zmieść całe zdjęcie — zostawia puste tło', 'modohome-katalog-produktow' ),
 						),
 						(string) $s['image_fit']
 					);

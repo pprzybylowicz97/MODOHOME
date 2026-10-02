@@ -253,9 +253,35 @@
 .modohome-catalog-card-image {
 	display: block;
 	width: 100%;
-	height: 100%;
+	height: var(--modohome-catalog-media-height, 100%);
 	object-fit: var(--modohome-catalog-fit);
 	transition: transform .3s ease;
+}
+
+/* Tryb „Dopasuj do zdjęcia”: kafelek przyjmuje proporcje konkretnej fotografii,
+   więc zrzut ekranu i zdjęcie 4:3 są widoczne w całości, bez przycinania
+   i bez pustych pasów. Karty w rzędzie mają wtedy różną wysokość. */
+
+.modohome-catalog--media-auto .modohome-catalog-card-media {
+	aspect-ratio: auto;
+}
+
+.modohome-catalog--media-auto .modohome-catalog-card-image {
+	height: auto;
+	object-fit: contain;
+}
+
+.modohome-catalog--media-auto .modohome-catalog-grid {
+	align-items: start;
+}
+
+.modohome-catalog--media-auto .modohome-catalog-card-placeholder {
+	aspect-ratio: 3 / 4;
+}
+
+/* Powiększenie przy najechaniu przycinałoby zdjęcie, którego nie chcemy przycinać. */
+.modohome-catalog--media-auto .modohome-catalog-card:hover .modohome-catalog-card-image {
+	transform: none;
 }
 
 .modohome-catalog-card:hover .modohome-catalog-card-image {
@@ -607,15 +633,29 @@
 
 .modohome-catalog-modal-stage {
 	position: relative;
-	aspect-ratio: 4 / 3;
-	background: #f3f3f3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 260px;
+	/* Bez sztywnych proporcji: pionowy zrzut ekranu i poziome zdjęcie
+	   wykorzystują tyle miejsca, ile mają, i zawsze mieszczą się w całości. */
+	max-height: 72vh;
+	background: var(--modohome-catalog-placeholder, rgba(17, 17, 17, .07));
 }
 
 .modohome-catalog-modal-image {
 	display: block;
-	width: 100%;
-	height: 100%;
+	/* Szerokość z proporcji, nie na siłę 100% — inaczej pionowy zrzut ekranu
+	   dostawałby pasy po bokach zamiast po prostu być większy. */
+	width: auto;
+	max-width: 100%;
+	height: auto;
+	max-height: 72vh;
 	object-fit: contain;
+}
+
+.modohome-catalog-modal-stage--empty {
+	aspect-ratio: 4 / 3;
 }
 
 .modohome-catalog-gallery-nav {
@@ -784,7 +824,12 @@
 	}
 
 	.modohome-catalog-modal-stage {
-		aspect-ratio: 1 / 1;
+		min-height: 200px;
+		max-height: 58vh;
+	}
+
+	.modohome-catalog-modal-image {
+		max-height: 58vh;
 	}
 }
 
