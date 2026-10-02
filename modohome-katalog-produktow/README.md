@@ -4,7 +4,7 @@ Prosty katalog produktów sklepu stacjonarnego MODOhome dla WordPressa. Służy 
 do prezentacji produktów, zdjęć i cen — **bez WooCommerce, bez koszyka, bez płatności
 i bez stanów magazynowych**.
 
-- **Wersja:** 1.3.1
+- **Wersja:** 1.4.0
 - **Wymaga WordPressa:** 6.1 lub nowszego
 - **Wymaga PHP:** 8.1 lub nowszego
 - **Licencja:** GPL-2.0-or-later
@@ -19,6 +19,7 @@ i bez stanów magazynowych**.
   nazwa, cena, gotowe.
 - Nowoczesny katalog na stronie: filtry kategorii, wyszukiwarka, sortowanie, numerowane
   strony i okno modalne ze szczegółami.
+- Zajawka najnowszych produktów na stronę główną — bez cen, z odnośnikiem do katalogu.
 - Osobna rola **Pracownik katalogu** z własnymi uprawnieniami — pracownik widzi
   i edytuje wyłącznie swoje produkty.
 - Panel ustawień: kolory, kolumny, proporcje zdjęć, elementy karty, waluta, limity zdjęć.
@@ -90,6 +91,48 @@ Przykłady:
 [modohome_catalog show_filters="yes"]
 [modohome_catalog show_search="yes"]
 ```
+
+### `[modohome_latest]` — zajawka najnowszych produktów
+
+Krótka sekcja na stronę główną. Kafelek różni się od katalogowego: pasek etykiety
+na całą szerokość zdjęcia, krótki opis zamiast ceny i odnośnik **„Cena w katalogu →”**
+prowadzący na stronę z pełnym katalogiem.
+
+| Atrybut | Wartości | Domyślnie | Opis |
+|---|---|---|---|
+| `limit` | 1–24 | `4` | Liczba produktów. |
+| `columns` | 1–6 | `4` | Kolumny na komputerze (tablet i telefon jak w ustawieniach). |
+| `category` | slug lub ID | — | Tylko jedna kategoria. |
+| `categories` | lista po przecinku | — | Kilka kategorii. |
+| `heading` | tekst | — | Nagłówek nad sekcją. |
+| `intro` | tekst | — | Akapit pod nagłówkiem. |
+| `link` | adres URL | z ustawień | Cel odnośnika na kafelku. |
+| `link_text` | tekst | `Cena w katalogu` | Treść odnośnika. |
+| `all_text` | tekst | — | Tekst przycisku pod zajawką; pusty = brak przycisku. |
+| `ratio` | jak w ustawieniach | `4:3` | Proporcje zdjęć, też `auto`. |
+| `orderby` | `latest`, `price_asc`, `price_desc`, `menu_order` | `latest` | Kolejność. |
+| `show_description` | `yes` / `no` | `yes` | Krótki opis pod nazwą. |
+| `show_price` | `yes` / `no` | `no` | Cena na kafelku. |
+| `show_category` | `yes` / `no` | `yes` | Kategoria nad nazwą. |
+| `show_badges` | `yes` / `no` | `yes` | Pasek etykiety. |
+
+Przykłady:
+
+```
+[modohome_latest]
+[modohome_latest limit="4" heading="Nowe w sklepie"]
+[modohome_latest limit="8" columns="4" all_text="Zobacz cały katalog"]
+[modohome_latest category="meble" show_price="yes"]
+[modohome_latest link="https://twoja-strona.pl/katalog/"]
+```
+
+**Ustaw adres katalogu raz:** w **Ustawienia katalogu → Działanie katalogu →
+Adres strony katalogu** wpisz pełny adres podstrony z `[modohome_catalog]`.
+Zajawka użyje go wtedy automatycznie. Jeśli zostawisz to pole puste, kafelki
+zajawki otwierają okno ze szczegółami produktu zamiast prowadzić do katalogu.
+
+Zajawka nie ma filtrów, wyszukiwarki ani stronicowania — to celowo prosta sekcja.
+Pełne funkcje daje `[modohome_catalog]`.
 
 ### `[modohome_product_form]` — dodawanie produktu z telefonu
 
@@ -380,13 +423,16 @@ modohome-katalog-produktow/
 ├── public/
 │   ├── class-catalog.php            Renderowanie katalogu
 │   ├── class-product-form.php       Formularz dodawania
-│   └── class-my-products.php        Panel pracownika
+│   ├── class-my-products.php        Panel pracownika
+│   └── class-latest.php             Zajawka najnowszych produktów
 ├── templates/                       Szablony do nadpisania w motywie
 │   ├── catalog.php
 │   ├── product-card.php
 │   ├── product-modal.php
 │   ├── product-form.php
-│   └── my-products.php
+│   ├── my-products.php
+│   ├── latest.php
+│   └── latest-card.php
 ├── assets/
 │   ├── css/  catalog.css · form.css · admin.css
 │   └── js/   catalog.js · form.js · admin.js

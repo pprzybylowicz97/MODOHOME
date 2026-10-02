@@ -965,3 +965,222 @@
 .modohome-catalog-modal .modohome-catalog-modal-details {
 	min-width: 0;
 }
+
+/* ---------------------------------------------------------------------------
+ * Zajawka najnowszych produktów — [modohome_latest]
+ *
+ * Inny kafelek niż w katalogu: pasek etykiety na całą szerokość zdjęcia,
+ * krótki opis zamiast ceny i odnośnik prowadzący do pełnego katalogu.
+ * ------------------------------------------------------------------------ */
+
+.modohome-catalog-latest {
+	background: transparent;
+}
+
+.modohome-catalog-latest-grid {
+	align-items: stretch;
+}
+
+.modohome-catalog--media-auto .modohome-catalog-latest-grid {
+	align-items: start;
+}
+
+.modohome-catalog-teaser {
+	display: flex;
+	min-width: 0;
+	max-width: 100%;
+	background: var(--modohome-catalog-card);
+	border-radius: var(--modohome-catalog-radius);
+	overflow: hidden;
+}
+
+.modohome-catalog-teaser-link {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-width: 0;
+	max-width: 100%;
+	margin: 0;
+	padding: 16px;
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	text-decoration: none;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+.modohome-catalog-teaser-link:focus-visible {
+	outline: 2px solid var(--modohome-catalog-primary);
+	outline-offset: -2px;
+}
+
+.modohome-catalog-teaser-media {
+	position: relative;
+	aspect-ratio: var(--modohome-catalog-ratio);
+	background: var(--modohome-catalog-placeholder);
+	overflow: hidden;
+}
+
+.modohome-catalog--media-auto .modohome-catalog-teaser-media {
+	aspect-ratio: auto;
+}
+
+.modohome-catalog-teaser-image {
+	display: block;
+	width: 100%;
+	height: var(--modohome-catalog-media-height, 100%);
+	object-fit: var(--modohome-catalog-fit);
+}
+
+.modohome-catalog--media-auto .modohome-catalog-teaser-image {
+	height: auto;
+	object-fit: contain;
+}
+
+.modohome-catalog-teaser-placeholder {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: repeating-linear-gradient(45deg, #efefef, #efefef 10px, #e6e6e6 10px, #e6e6e6 20px);
+}
+
+.modohome-catalog--media-auto .modohome-catalog-teaser-placeholder {
+	aspect-ratio: 4 / 3;
+}
+
+/* Pasek etykiety ciągnie się przez całą szerokość zdjęcia — tak jak w projekcie. */
+.modohome-catalog-teaser-badge {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1;
+	padding: 10px 16px;
+	color: #ffffff;
+	font-size: .8125rem;
+	font-weight: 700;
+	line-height: 1.2;
+	background: var(--modohome-catalog-ink);
+}
+
+.modohome-catalog-teaser-badge--new,
+.modohome-catalog-teaser-badge--promo {
+	background: var(--modohome-catalog-primary);
+}
+
+.modohome-catalog-teaser-badge--last {
+	color: var(--modohome-catalog-ink);
+	background: var(--modohome-catalog-warning);
+}
+
+.modohome-catalog-teaser-body {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 10px;
+	min-width: 0;
+	padding: 20px 4px 4px;
+}
+
+.modohome-catalog-teaser-category {
+	margin: 0;
+	color: var(--modohome-catalog-muted);
+	font-size: .75rem;
+	font-weight: 500;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+}
+
+.modohome-catalog-teaser-title {
+	margin: 0;
+	font-size: 1.25rem;
+	font-weight: 800;
+	line-height: 1.25;
+	letter-spacing: -.01em;
+	text-transform: uppercase;
+}
+
+.modohome-catalog-teaser-description {
+	margin: 0;
+	color: var(--modohome-catalog-muted);
+	font-size: .9375rem;
+	line-height: 1.5;
+}
+
+.modohome-catalog-teaser-price {
+	margin: 0;
+}
+
+.modohome-catalog-teaser-cta {
+	display: inline-flex;
+	gap: 8px;
+	align-items: center;
+	margin-top: auto;
+	padding-top: 8px;
+	color: var(--modohome-catalog-primary);
+	font-size: .9375rem;
+	font-weight: 800;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+}
+
+.modohome-catalog-teaser-arrow {
+	transition: transform .15s ease;
+}
+
+.modohome-catalog-teaser-link:hover .modohome-catalog-teaser-arrow {
+	transform: translateX(4px);
+}
+
+.modohome-catalog-teaser--sold .modohome-catalog-teaser-image {
+	filter: grayscale(1);
+	opacity: .72;
+}
+
+.modohome-catalog-latest-all {
+	display: flex;
+	justify-content: center;
+	margin: 32px 0 0;
+}
+
+/* Odporność na style motywu — te same zasady co przy kafelku katalogu. */
+
+.modohome-catalog .modohome-catalog-teaser-link {
+	white-space: normal;
+	letter-spacing: normal;
+}
+
+.modohome-catalog .modohome-catalog-teaser-title {
+	max-width: 100%;
+	font-size: 1.25rem;
+	font-weight: 800;
+	line-height: 1.25;
+	text-transform: uppercase;
+	letter-spacing: -.01em;
+	white-space: normal;
+	overflow-wrap: anywhere;
+	hyphens: auto;
+}
+
+.modohome-catalog .modohome-catalog-teaser-category,
+.modohome-catalog .modohome-catalog-teaser-description,
+.modohome-catalog .modohome-catalog-teaser-badge {
+	max-width: 100%;
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+
+.modohome-catalog .modohome-catalog-teaser-cta {
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.modohome-catalog-teaser-arrow,
+	.modohome-catalog-teaser-link:hover .modohome-catalog-teaser-arrow {
+		transition: none;
+		transform: none;
+	}
+}

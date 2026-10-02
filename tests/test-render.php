@@ -228,6 +228,79 @@ assert_missing( 'brak numerowanej paginacji', $catalog2, 'data-modohome-paginati
 $GLOBALS['stub_options']['modohome_catalog_settings'] = Settings::defaults();
 Settings::flush();
 
+echo "== Zajawka najnowszych produktów ==\n";
+
+$teaser_opts = array(
+	'link'             => 'https://example.test/katalog/',
+	'link_text'        => 'Cena w katalogu',
+	'show_description' => true,
+	'show_price'       => false,
+	'show_category'    => true,
+	'show_badges'      => true,
+);
+
+$GLOBALS['stub_meta'][42]['_modohome_catalog_badge'] = 'exposition';
+$GLOBALS['stub_meta'][42]['_modohome_catalog_availability'] = 'available';
+
+$teaser = \MODOhome\Catalog\Frontend\Latest::render_card( $post, $teaser_opts );
+file_put_contents( __DIR__ . '/out-teaser.html', $teaser );
+
+assert_contains( 'kafelek zajawki', $teaser, 'modohome-catalog-teaser' );
+assert_contains( 'pasek etykiety Ekspozycja', $teaser, 'modohome-catalog-teaser-badge--exposition' );
+assert_contains( 'kategoria', $teaser, 'Krzesła' );
+assert_contains( 'opis produktu', $teaser, 'tapicerowane' );
+assert_contains( 'odnośnik do katalogu', $teaser, 'href="https://example.test/katalog/"' );
+assert_contains( 'tekst wezwania', $teaser, 'Cena w katalogu' );
+assert_contains( 'strzałka', $teaser, 'modohome-catalog-teaser-arrow' );
+assert_missing( 'cena ukryta zgodnie z projektem', $teaser, 'modohome-catalog-teaser-price' );
+assert_missing( 'XSS w nazwie zneutralizowany', $teaser, '<script>alert(1)</script>' );
+
+echo "== Zajawka bez adresu katalogu — otwiera okno modalne ==\n";
+
+$no_link = $teaser_opts;
+$no_link['link'] = '';
+$no_link['link_text'] = 'Zobacz szczegóły';
+
+$teaser2 = \MODOhome\Catalog\Frontend\Latest::render_card( $post, $no_link );
+
+assert_missing( 'brak odnośnika', $teaser2, '<a class="modohome-catalog-teaser-link"' );
+assert_contains( 'przycisk otwierający modal', $teaser2, 'data-modohome-open="42"' );
+assert_contains( 'aria-haspopup', $teaser2, 'aria-haspopup="dialog"' );
+assert_contains( 'zapasowy tekst wezwania', $teaser2, 'Zobacz szczegóły' );
+
+echo "== Zajawka z ceną ==\n";
+
+$with_price = $teaser_opts;
+$with_price['show_price'] = true;
+$teaser3 = \MODOhome\Catalog\Frontend\Latest::render_card( $post, $with_price );
+
+assert_contains( 'cena widoczna po włączeniu', $teaser3, '1 299,90 zł' );
+
+echo "== Pełna sekcja zajawki ==\n";
+
+$section = \MODOhome\Catalog\Plugin::render_template(
+	'latest',
+	array(
+		'instance_id' => 'modohome-latest-1', 'query' => $query, 'columns' => 4,
+		'heading' => 'Nowe w sklepie', 'intro' => '', 'link' => 'https://example.test/katalog/',
+		'link_text' => 'Cena w katalogu', 'ratio' => '4:3', 'ratio_css' => '4 / 3',
+		'media_auto' => false, 'show_description' => true, 'show_price' => false,
+		'show_category' => true, 'show_badges' => true,
+		'all_link' => 'https://example.test/katalog/', 'all_text' => 'Zobacz cały katalog',
+	)
+);
+
+file_put_contents( __DIR__ . '/out-latest.html', $section );
+
+assert_contains( 'sekcja zajawki', $section, 'modohome-catalog-latest' );
+assert_contains( 'znacznik dla JavaScriptu', $section, 'data-modohome-teaser' );
+assert_contains( 'nagłówek sekcji', $section, 'Nowe w sklepie' );
+assert_contains( 'proporcje przekazane w stylu', $section, '--modohome-catalog-ratio:4 / 3' );
+assert_contains( 'liczba kolumn', $section, '--modohome-catalog-cols-desktop:4' );
+assert_contains( 'przycisk pod zajawką', $section, 'Zobacz cały katalog' );
+assert_missing( 'zajawka nie ma filtrów', $section, 'data-modohome-filter' );
+assert_missing( 'zajawka nie ma paginacji', $section, 'data-modohome-pagination' );
+
 echo "== Tryb kadrowania na kontenerze katalogu ==\n";
 
 $common = array(

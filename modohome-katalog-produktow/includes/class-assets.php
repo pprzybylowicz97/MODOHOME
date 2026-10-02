@@ -71,7 +71,7 @@ class Assets {
 
 		$content = (string) $post->post_content;
 
-		if ( has_shortcode( $content, 'modohome_catalog' ) ) {
+		if ( has_shortcode( $content, 'modohome_catalog' ) || has_shortcode( $content, 'modohome_latest' ) ) {
 			$this->detected['catalog'] = true;
 		}
 

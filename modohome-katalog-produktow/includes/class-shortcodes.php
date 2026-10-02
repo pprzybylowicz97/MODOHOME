@@ -34,6 +34,7 @@ class Shortcodes {
 		add_shortcode( 'modohome_catalog', array( $this, 'render_catalog' ) );
 		add_shortcode( 'modohome_product_form', array( $this, 'render_form' ) );
 		add_shortcode( 'modohome_my_products', array( $this, 'render_my_products' ) );
+		add_shortcode( 'modohome_latest', array( $this, 'render_latest' ) );
 	}
 
 	/**
@@ -101,6 +102,39 @@ class Shortcodes {
 		$this->assets->enqueue_catalog();
 
 		return ( new Frontend\My_Products() )->render( $atts );
+	}
+
+	/**
+	 * [modohome_latest] — zajawka najnowszych produktów na stronę główną.
+	 *
+	 * @param array<string,mixed>|string $atts Atrybuty shortcode’u.
+	 */
+	public function render_latest( array|string $atts = array() ): string {
+		$atts = shortcode_atts(
+			array(
+				'limit'            => 4,
+				'columns'          => 4,
+				'category'         => '',
+				'categories'       => '',
+				'heading'          => '',
+				'intro'            => '',
+				'link'             => '',
+				'link_text'        => '',
+				'all_text'         => '',
+				'ratio'            => '4:3',
+				'orderby'          => 'latest',
+				'show_description' => '',
+				'show_price'       => '',
+				'show_category'    => '',
+				'show_badges'      => '',
+			),
+			is_array( $atts ) ? $atts : array(),
+			'modohome_latest'
+		);
+
+		$this->assets->enqueue_catalog();
+
+		return ( new Frontend\Latest() )->render( $atts );
 	}
 
 	/**

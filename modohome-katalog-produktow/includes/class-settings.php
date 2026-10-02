@@ -79,6 +79,7 @@ class Settings {
 			'enable_filters'             => true,
 			'enable_load_more'           => false,
 			'enable_single_pages'        => false,
+			'catalog_page_url'           => '',
 
 			// Udogodnienia.
 			'auto_hide_days'             => 0,
@@ -238,6 +239,9 @@ class Settings {
 		$out['currency_position'] = self::pick( $input['currency_position'] ?? '', array( 'after', 'before' ), $defaults['currency_position'] );
 
 		$out['details_mode']  = self::pick( $input['details_mode'] ?? '', array( 'modal', 'link', 'none' ), $defaults['details_mode'] );
+
+		$catalog_url              = esc_url_raw( trim( (string) ( $input['catalog_page_url'] ?? '' ) ) );
+		$out['catalog_page_url']  = $catalog_url;
 
 		foreach ( array( 'enable_search', 'enable_filters', 'enable_load_more', 'enable_single_pages', 'show_added_today', 'show_category_counts', 'enable_activity_log', 'delete_data_on_uninstall', 'webp_convert', 'webp_convert_all' ) as $flag ) {
 			$out[ $flag ] = ! empty( $input[ $flag ] );

@@ -185,6 +185,29 @@ ok( 'właściwa reguła CSS zachowana', str_contains( $clean['custom_css'], 'col
 check( 'checkbox zaznaczony', $clean['show_category'], true );
 check( 'checkbox pominięty → false', $clean['show_badges'], false );
 
+echo "== Adres strony katalogu (dla zajawki) ==\n";
+
+check(
+	'poprawny adres zachowany',
+	Settings::sanitize( array( 'catalog_page_url' => 'https://modohome.pl/katalog/' ) )['catalog_page_url'],
+	'https://modohome.pl/katalog/'
+);
+check( 'puste pole dozwolone', Settings::sanitize( array( 'catalog_page_url' => '' ) )['catalog_page_url'], '' );
+check(
+	'adres javascript: odrzucony',
+	Settings::sanitize( array( 'catalog_page_url' => 'javascript:alert(1)' ) )['catalog_page_url'],
+	''
+);
+check(
+	'spacje obcięte',
+	Settings::sanitize( array( 'catalog_page_url' => '  https://modohome.pl/katalog/  ' ) )['catalog_page_url'],
+	'https://modohome.pl/katalog/'
+);
+
+echo "== Sortowanie „najnowsze” dla zajawki ==\n";
+
+ok( 'domyślne proporcje zajawki istnieją w liście', isset( Settings::image_ratios()['4:3'] ) );
+
 echo "== 6. Własny CSS tylko dla administratora ==\n";
 
 $GLOBALS['stub_options']['modohome_catalog_settings'] = array_merge( Settings::defaults(), array( 'custom_css' => '.zachowane{}' ) );

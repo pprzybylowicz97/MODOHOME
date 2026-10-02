@@ -87,6 +87,10 @@ class Query {
 			);
 
 			$query_args['orderby'] = array( 'modohome_price' => 'price_asc' === $orderby ? 'ASC' : 'DESC' );
+		} elseif ( 'latest' === $orderby ) {
+			// Zajawka na stronie głównej ma pokazywać faktycznie najnowsze produkty,
+			// bez wpływu ręcznej kolejności.
+			$query_args['orderby'] = array( 'date' => 'DESC' );
 		} elseif ( 'menu_order' === $orderby ) {
 			$query_args['orderby'] = array(
 				'menu_order' => 'ASC',

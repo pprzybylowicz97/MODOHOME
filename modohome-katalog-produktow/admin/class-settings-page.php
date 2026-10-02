@@ -81,7 +81,9 @@ class Settings_Page {
 				<?php esc_html_e( 'formularz dodawania:', 'modohome-katalog-produktow' ); ?>
 				<code>[modohome_product_form]</code> ·
 				<?php esc_html_e( 'panel pracownika:', 'modohome-katalog-produktow' ); ?>
-				<code>[modohome_my_products]</code>
+				<code>[modohome_my_products]</code> ·
+				<?php esc_html_e( 'zajawka na stronę główną:', 'modohome-katalog-produktow' ); ?>
+				<code>[modohome_latest]</code>
 			</p>
 
 			<form method="post" action="options.php">
@@ -188,6 +190,17 @@ class Settings_Page {
 					);
 
 					$this->checkbox_row( $name, 'enable_single_pages', __( 'Podstrony produktów', 'modohome-katalog-produktow' ), __( 'Włącz publiczne podstrony pojedynczych produktów', 'modohome-katalog-produktow' ), (bool) $s['enable_single_pages'] );
+					$this->text_row( $name, 'catalog_page_url', __( 'Adres strony katalogu', 'modohome-katalog-produktow' ), (string) $s['catalog_page_url'] );
+					?>
+					<tr>
+						<th scope="row"></th>
+						<td>
+							<p class="description">
+								<?php esc_html_e( 'Pełny adres podstrony, na której umieściłeś shortcode [modohome_catalog]. Używa go zajawka [modohome_latest] jako cel odnośnika „Cena w katalogu”. Puste pole sprawia, że kafelki zajawki otwierają okno ze szczegółami produktu.', 'modohome-katalog-produktow' ); ?>
+							</p>
+						</td>
+					</tr>
+					<?php
 					$this->checkbox_row( $name, 'enable_search', __( 'Wyszukiwarka', 'modohome-katalog-produktow' ), __( 'Pokazuj pole wyszukiwania w katalogu', 'modohome-katalog-produktow' ), (bool) $s['enable_search'] );
 					$this->checkbox_row( $name, 'enable_filters', __( 'Filtry', 'modohome-katalog-produktow' ), __( 'Pokazuj filtry kategorii i sortowanie', 'modohome-katalog-produktow' ), (bool) $s['enable_filters'] );
 					$this->checkbox_row( $name, 'enable_load_more', __( 'Przycisk „Pokaż więcej”', 'modohome-katalog-produktow' ), __( 'Doładowuj produkty przyciskiem. Wyłączone = numerowane strony (1, 2, 3…).', 'modohome-katalog-produktow' ), (bool) $s['enable_load_more'] );

@@ -477,12 +477,30 @@
 	}
 
 	/**
-	 * Uruchamia wszystkie katalogi na stronie.
+	 * Zajawka najnowszych produktów. Gdy nie ustawiono adresu katalogu,
+	 * kafelek otwiera okno modalne produktu.
+	 *
+	 * @param {HTMLElement} root Kontener zajawki.
+	 */
+	function initTeaser( root ) {
+		root.addEventListener( 'click', function ( event ) {
+			var trigger = event.target.closest( '[data-modohome-open]' );
+
+			if ( ! trigger || ! root.contains( trigger ) ) {
+				return;
+			}
+
+			event.preventDefault();
+			openModal( trigger.getAttribute( 'data-modohome-open' ) );
+		} );
+	}
+
+	/**
+	 * Uruchamia wszystkie katalogi i zajawki na stronie.
 	 */
 	function init() {
-		var roots = document.querySelectorAll( '[data-modohome-catalog]' );
-
-		Array.prototype.forEach.call( roots, initCatalog );
+		Array.prototype.forEach.call( document.querySelectorAll( '[data-modohome-catalog]' ), initCatalog );
+		Array.prototype.forEach.call( document.querySelectorAll( '[data-modohome-teaser]' ), initTeaser );
 	}
 
 	if ( document.readyState === 'loading' ) {

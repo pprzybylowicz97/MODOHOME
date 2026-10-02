@@ -18,6 +18,7 @@ mv css-*.css inline.css "$WORK/"
 
 python3 make-pages.py "$WORK" ../modohome-katalog-produktow
 python3 make-theme-page.py "$WORK" ../modohome-katalog-produktow
+python3 make-latest-page.py "$WORK" ../modohome-katalog-produktow
 
 echo "== Liczba kolumn i ustawienia wyglądu =="
 node test-layout.mjs "$WORK" || fail=1
@@ -27,6 +28,8 @@ echo "== Okno modalne =="
 node test-modal.mjs "$WORK" || fail=1
 echo "== Odporność na style motywu =="
 node test-theme.mjs "$WORK" || fail=1
+echo "== Zajawka najnowszych produktów =="
+node test-latest.mjs "$WORK" || fail=1
 
 [ $fail -eq 0 ] && echo "WSZYSTKO PRZESZŁO" || echo "SĄ NIEPOWODZENIA"
 exit $fail

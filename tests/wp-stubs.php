@@ -22,6 +22,21 @@ function _n( $s, $p, $n, $domain = null ) { return 1 === $n ? $s : $p; }
 function esc_html( $t ) { return htmlspecialchars( (string) $t, ENT_QUOTES, 'UTF-8' ); }
 function esc_attr( $t ) { return htmlspecialchars( (string) $t, ENT_QUOTES, 'UTF-8' ); }
 function esc_url( $t ) { return filter_var( (string) $t, FILTER_SANITIZE_URL ); }
+
+function esc_url_raw( $url, $protocols = null ) {
+	$url = trim( (string) $url );
+
+	if ( '' === $url ) {
+		return '';
+	}
+
+	// Dopuszczamy wyłącznie http(s), tak jak robi to WordPress.
+	if ( ! preg_match( '#^https?://#i', $url ) ) {
+		return '';
+	}
+
+	return filter_var( $url, FILTER_SANITIZE_URL );
+}
 function esc_textarea( $t ) { return htmlspecialchars( (string) $t, ENT_QUOTES, 'UTF-8' ); }
 
 function sanitize_text_field( $s ) { return trim( strip_tags( (string) $s ) ); }
